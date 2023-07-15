@@ -15,7 +15,7 @@ class Client(db.Model):
     description = db.Column(db.String(300), nullable=True)
     password = db.Column(db.String(300), nullable=False)
     auth_token = db.Column(db.String(300), nullable=True)
-    type = db.Column(db.Integer, db.ForeignKey('UsetType.id'), nullable=False) 
+    type = db.Column(db.Integer, db.ForeignKey('type.id'), nullable=False) 
     portfolio_url = db.Column(URLType, nullable=True)
     registered = db.Column(db.DateTime, default=datetime.utcnow)
 
