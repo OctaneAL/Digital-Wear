@@ -1,10 +1,9 @@
 from api import db, app
 from datetime import datetime
 from sqlalchemy_utils import URLType
-from UserType import UserType
 
 class Client(db.Model):
-    __tablename__ = 'client'
+    __tablename__ = 'Client'
 
     id = db.Column(db.Integer, primary_key=True, nullable=False)
     first_name = db.Column(db.String(30), nullable=False)
@@ -18,6 +17,7 @@ class Client(db.Model):
     type = db.Column(db.Integer, db.ForeignKey('type.id'), nullable=False) 
     portfolio_url = db.Column(URLType, nullable=True)
     registered = db.Column(db.DateTime, default=datetime.utcnow)
-
+    products = db.relationship('Product', backref='client', lazy=True)
+    favourite_products = db.relationship('FavouriteProducts', backref='client', lazy=True)
     def __init__(self):
         pass # todo ???
