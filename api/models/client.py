@@ -14,10 +14,11 @@ class Client(db.Model):
     description = db.Column(db.String(300), nullable=True)
     password = db.Column(db.String(300), nullable=False)
     auth_token = db.Column(db.String(300), nullable=True)
-    type = db.Column(db.Integer, db.ForeignKey('type.id'), nullable=False) 
+    type = db.Column(db.Integer, db.ForeignKey('UserType.id'), nullable=False) 
     portfolio_url = db.Column(URLType, nullable=True)
     registered = db.Column(db.DateTime, default=datetime.utcnow)
-    products = db.relationship('Product', backref='client', lazy=True)
+    products = db.relationship('product', backref='client', lazy=True)
     favourite_products = db.relationship('FavouriteProducts', backref='client', lazy=True)
+
     def __init__(self):
         pass # todo ???
