@@ -3,10 +3,7 @@ from flask_restful import Api
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 from flask_migrate import Migrate
-try:
-    from .config import SECRET_KEY, SQLALCHEMY_DATABASE_URI
-except:
-    from config import SECRET_KEY, SQLALCHEMY_DATABASE_URI
+from .config import SECRET_KEY, SQLALCHEMY_DATABASE_URI
 
 app = Flask(__name__)
 api = Api(app)
