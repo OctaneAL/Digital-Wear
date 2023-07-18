@@ -14,4 +14,4 @@ class Product(db.Model):
     type = db.Column(db.Integer, db.ForeignKey('UserType.id'), nullable=False) 
     client = db.Column(db.Integer, db.ForeignKey('Client.id'), nullable=False) 
     registered = db.Column(db.DateTime, default=datetime.utcnow)
-    favourite_products = db.relationship('FavouriteProduct', backref='product', lazy=True)
+    favourite_products = db.relationship('FavouriteProduct', backref='Product', lazy=True)

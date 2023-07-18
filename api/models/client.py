@@ -1,8 +1,9 @@
 from api import db, app
 from datetime import datetime
 from sqlalchemy_utils import URLType
+from flask_login import UserMixin
 
-class Client(db.Model):
+class Client(db.Model, UserMixin):
     __tablename__ = 'Client'
 
     id = db.Column(db.Integer, primary_key=True, nullable=False)
@@ -17,8 +18,8 @@ class Client(db.Model):
     type = db.Column(db.Integer, db.ForeignKey('UserType.id'), nullable=False) 
     portfolio_url = db.Column(URLType, nullable=True)
     registered = db.Column(db.DateTime, default=datetime.utcnow)
-    products = db.relationship('product', backref='client', lazy=True)
-    favourite_products = db.relationship('FavouriteProducts', backref='client', lazy=True)
+    products = db.relationship('Product', backref='Client', lazy=True)
+    favourite_products = db.relationship('FavouriteProduct', backref='Client', lazy=True)
 
     def __init__(self):
         pass # todo ???
