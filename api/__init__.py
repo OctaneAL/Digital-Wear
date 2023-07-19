@@ -23,11 +23,12 @@ login_manager = LoginManager()
 from api.models import Client, FavouriteProducts, Product, ProductType, UserType
 
 with app.app_context():
-    print(UserType.query.all())
+    db.create_all()
     print(Client.query.all())
+    print(UserType.query.all())
     print(FavouriteProducts.query.all())
-    print(Product.query.all())
     print(ProductType.query.all())
+    print(Product.query.all())
 
 # Перенести вище
 login_manager.init_app()
