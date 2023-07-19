@@ -1,5 +1,5 @@
 from api import app
-from api.models import Client, FavouriteProduct, Product, ProductType, UserType
+from api.models import Client, FavouriteProducts, Product, ProductType, UserType
 # from api.routes import it_college, ns_members, it_college_type, ns_members_type, main_type
 
 if __name__ == '__main__':

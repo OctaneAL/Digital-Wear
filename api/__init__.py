@@ -17,11 +17,7 @@ migrate = Migrate(app, db, compare_type=True)
 migrate.init_app(app, db)
 ma = Marshmallow(app)
 
-from api.models.UserType import UserType
-from api.models.Client import Client
-from api.models.FavouriteProduct import FavouriteProducts
-from api.models.Product import Product
-from api.models.ProductType import ProductType
+from api.models import Client, FavouriteProducts, Product, ProductType, UserType
 
 with app.app_context():
     print(UserType.query.all())
