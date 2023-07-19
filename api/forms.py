@@ -54,7 +54,10 @@ class UserRegister(Form):
             validators.Length(min=4, max=80),
         ],
     )
-    submit = SubmitField('Submit')
+    submit = SubmitField('Register')
+
+    def validate_email(self, email):
+        pass # todo !!!
 
     def validate_phone(self, phone):
         try:
@@ -66,3 +69,20 @@ class UserRegister(Form):
     
     def generate_auth_token(self):
         pass # todo???
+
+class UserLogin(Form):
+    email = StringField(
+        'Email',
+        validators=[
+            validators.DataRequired(),
+            validators.Email(),
+        ],
+    )
+    password = PasswordField(
+        "Enter password",
+        validators=[
+            validators.DataRequired(),
+            validators.Length(min=4, max=80),
+        ],
+    )
+    submit = SubmitField('Login')
