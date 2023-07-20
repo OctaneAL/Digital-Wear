@@ -10,18 +10,16 @@ def login():
     if form.validate_on_submit():
         user = Client.query.filter_by(email = form.email.data).first()
         if not user:
-            pass # There is no user with this email, return error
+            pass # There is no user with this email, flash error
         else:
             if not Bcrypt.check_password_hash(user.password, form.password.data):
-                pass # Wrong password, return error
+                pass # Wrong password, flash error
             else:
                 login_user(user)
-                return 'ddd' # temp solution
-                return redirect(url_for('dashboard')) # final version
-    return 'aaa' # temp solution
-    return render_template('login.html', form=form)
+                return redirect(url_for('dashboard')) # перепиши як треба, це шаблон
+    return render_template('login.html', form=form) # перепиши як треба, це шаблон
 
-@app.route('/register', methods=['GET', 'POST']) # final version
+@app.route('/register', methods=['GET', 'POST'])
 def register():
     form = UserRegister()
 
@@ -37,8 +35,6 @@ def register():
         )
         db.session.add(new_user)
         db.session.commit()
-        return 'ccc' # temp solution
-        return redirect(url_for('login')) # final version
+        return redirect(url_for('login')) # перепиши як треба, це шаблон
     
-    return 'bbb' # temp solution
-    return render_template('register.html', form=form) # final version
+    return render_template('register.html', form=form) # перепиши як треба, це шаблон

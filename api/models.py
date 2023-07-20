@@ -68,3 +68,6 @@ class ProductType(db.Model):
 
     # One-to-many relationship with Product
     products = db.relationship('Product', back_populates='product_type')
+
+    def __init__(self, name):
+        self.name = name

@@ -1,6 +1,6 @@
 from wtforms import Form, StringField, SubmitField, validators, PasswordField, SelectField
 import phonenumbers
-from api.models import UserType
+from api.models import UserType, Client
 
 class UserRegister(Form):
     email = StringField(
@@ -31,12 +31,13 @@ class UserRegister(Form):
         ],
     )
 
-    # types = UserType.query.all()
+    types = [user.name for user in UserType.query.all()]
     
     type = SelectField(
         'Select your profession',
-        choices = [
-            
+        choices = types,
+        validators=[
+            validators.DataRequired(),
         ],
     )
     password = PasswordField(
@@ -57,13 +58,15 @@ class UserRegister(Form):
     submit = SubmitField('Register')
 
     def validate_email(self, email):
-        pass # todo !!!
+        exists = Client.query.filter_by(email=email).first() is not None
+        if exists:
+            raise validators.ValidationError('Email is already taken')
 
     def validate_phone(self, phone):
         try:
             p = phonenumbers.parse(phone.data)
             if not phonenumbers.is_valid_number(p):
-                raise ValueError()
+                raise validators.ValidationError('Invalid phone number')
         except (phonenumbers.phonenumberutil.NumberParseException, ValueError):
             raise validators.ValidationError('Invalid phone number')
     

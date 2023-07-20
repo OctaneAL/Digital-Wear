@@ -20,18 +20,8 @@ migrate.init_app(app, db)
 ma = Marshmallow(app)
 login_manager = LoginManager()
 
-from api.models import Client, FavouriteProducts, Product, ProductType, UserType
-
-with app.app_context():
-    db.create_all()
-    print(Client.query.all())
-    print(UserType.query.all())
-    print(FavouriteProducts.query.all())
-    print(ProductType.query.all())
-    print(Product.query.all())
-
 # Перенести вище
-login_manager.init_app()
+login_manager.init_app(app)
 login_manager.login_view = 'login'
 
 # db.init_app(app)
