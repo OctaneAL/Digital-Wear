@@ -1,8 +1,10 @@
-from wtforms import Form, StringField, SubmitField, validators, PasswordField, SelectField
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField, validators, PasswordField, SelectField
 import phonenumbers
 from api.models import UserType, Client
+from api import app
 
-class UserRegister(Form):
+class UserRegister(FlaskForm):
     email = StringField(
         'Email',
         validators=[
@@ -31,8 +33,12 @@ class UserRegister(Form):
         ],
     )
 
-    types = [user.name for user in UserType.query.all()]
-    
+    with app.app_context():
+        types = [user.name for user in UserType.query.all()]
+        types.append("Красавчик")
+        types.append("Лошара")
+
+        
     type = SelectField(
         'Select your profession',
         choices = types,
@@ -65,7 +71,7 @@ class UserRegister(Form):
     def validate_phone(self, phone):
         try:
             p = phonenumbers.parse(phone.data)
-            if not phonenumbers.is_valid_number(p):
+            if not phonenumbers.is_valid_number(p): 
                 raise validators.ValidationError('Invalid phone number')
         except (phonenumbers.phonenumberutil.NumberParseException, ValueError):
             raise validators.ValidationError('Invalid phone number')
@@ -73,7 +79,7 @@ class UserRegister(Form):
     def generate_auth_token(self):
         pass # todo???
 
-class UserLogin(Form):
+class UserLogin(FlaskForm):
     email = StringField(
         'Email',
         validators=[

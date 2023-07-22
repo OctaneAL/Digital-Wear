@@ -11,6 +11,8 @@ class UserType(db.Model):
 
     client = db.relationship('Client', back_populates='client_type')
 
+    def __init__(self, name):
+        self.name = name
 
 class Client(db.Model, UserMixin):
     __tablename__ = 'Client'
@@ -32,8 +34,8 @@ class Client(db.Model, UserMixin):
     client_type = db.relationship('UserType', back_populates='client')
     product = db.relationship('Product', back_populates='client')
 
-    def __init__(self):
-        pass # todo ???
+    def __init__(self, name):
+        self.name = name
 
 class FavouriteProducts(db.Model):
     __tablename__ = "FavouriteProducts"
@@ -45,6 +47,9 @@ class FavouriteProducts(db.Model):
 
     product = db.relationship('Product', back_populates='favourite_products')
     client = db.relationship('Client', back_populates='favourite_products')
+
+    def __init__(self, name):
+        self.name = name
 
 class Product(db.Model):
     __tablename__ = "Product"
@@ -60,6 +65,9 @@ class Product(db.Model):
     product_type = db.relationship('ProductType', back_populates='products')
     favourite_products = db.relationship('FavouriteProducts', back_populates='product')
     client = db.relationship('Client', back_populates='product')
+
+    def __init__(self, name):
+        self.name = name
 
 class ProductType(db.Model):
     __tablename__ = "ProductType"

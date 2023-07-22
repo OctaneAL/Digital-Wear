@@ -4,7 +4,6 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 from flask_migrate import Migrate
 from .config import SECRET_KEY, SQLALCHEMY_DATABASE_URI
-
 from flask_login import LoginManager
 
 app = Flask(__name__)
@@ -18,9 +17,8 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db, compare_type=True)
 migrate.init_app(app, db)
 ma = Marshmallow(app)
-login_manager = LoginManager()
 
-# Перенести вище
+login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
 

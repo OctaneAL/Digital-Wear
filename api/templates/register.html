@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inria+Sans:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <meta charset="UTF-8" />
+    <title>HTML5 Login Form with validation Example</title>
+    <link type="text/css" href="{{ url_for('static', filename = 'css/register.css') }}" rel = "stylesheet"/>
+  </head>
+  <body>
+    <!-- partial:index.partial.html -->
+    <div id="singup-form-wrap">
+      <form id="singup-form">
+        <p>
+          {{ form.email(id="email", placeholder="Email") }}
+           <i class="validation"><span></span><span></span></i>
+        </p>
+        <p>
+          {{ form.first_name(id="First", placeholder="First name") }}
+           <i class="validation"><span></span><span></span></i>
+        </p>
+        <p>
+          {{ form.last_name(id="Last", placeholder="Last name") }}
+           <i class="validation"><span></span><span></span></i>
+        </p>
+        <p>
+          {{ form.phone(id="Phone", placeholder="Phone") }}
+           <i class="validation"><span></span><span></span></i>
+        </p>
+        {{ form.type(id="Type", placeholder="Last name") }}
+        <i class="validation"><span></span><span></span></i>
+        <p>
+          {{ form.password(id="password", placeholder="Password") }}
+        <i class="validation"><span></span><span></span></i>
+        </p>
+        <p>
+          {{ form.password2(id="password", placeholder="Repeat password") }}
+        <i class="validation"><span></span><span></span></i>
+        </p>
+        <p>
+          {{ form.submit(id = "login", value = "Register") }}
+        </p>
+      </form>
+    </div>
+    <!--login-form-wrap-->
+    <!-- partial -->
+  </body>
+</html>
