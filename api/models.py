@@ -34,8 +34,13 @@ class Client(db.Model, UserMixin):
     client_type = db.relationship('UserType', back_populates='client')
     product = db.relationship('Product', back_populates='client')
 
-    def __init__(self, name):
-        self.name = name
+    def __init__(self, email, first_name, last_name, phone, client_type_id, password):
+        self.email = email
+        self.first_name = first_name
+        self.last_name = last_name
+        self.phone = phone
+        self.client_type_id = client_type_id
+        self.password = password
 
 class FavouriteProducts(db.Model):
     __tablename__ = "FavouriteProducts"

@@ -34,10 +34,7 @@ class UserRegister(FlaskForm):
     )
 
     with app.app_context():
-        types = [user.name for user in UserType.query.all()]
-        types.append("Красавчик")
-        types.append("Лошара")
-
+        types = [(user.id, user.name) for user in UserType.query.all()]
         
     type = SelectField(
         'Select your profession',
@@ -64,19 +61,19 @@ class UserRegister(FlaskForm):
     submit = SubmitField('Register')
 
     def validate_email(self, email):
-        exists = Client.query.filter_by(email=email).first() is not None
+        exists = Client.query.filter_by(email=email.data).first() is not None
         if exists:
             raise validators.ValidationError('Email is already taken')
 
-    def validate_phone(self, phone):
-        try:
-            p = phonenumbers.parse(phone.data)
-            if not phonenumbers.is_valid_number(p): 
-                raise validators.ValidationError('Invalid phone number')
-        except (phonenumbers.phonenumberutil.NumberParseException, ValueError):
-            raise validators.ValidationError('Invalid phone number')
+    # def validate_phone(self, phone):
+    #     try:
+    #         p = phonenumbers.parse(phone.data)
+    #         if not phonenumbers.is_valid_number(p): 
+    #             raise validators.ValidationError('Invalid phone number')
+    #     except (phonenumbers.phonenumberutil.NumberParseException, ValueError):
+    #         raise validators.ValidationError('Invalid phone number')
     
-    def generate_auth_token(self):
+    def generate_auth_token():
         pass # todo???
 
 class UserLogin(FlaskForm):

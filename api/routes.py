@@ -38,12 +38,14 @@ def register():
             first_name = form.first_name.data,
             last_name = form.last_name.data,
             phone = form.phone.data,
-            type = form.type.data,
+            client_type_id = form.type.data,
             password = hashed_password,
         )
         db.session.add(new_user)
         db.session.commit()
+
         return redirect(url_for('login')) 
+
     return render_template('register.html', form=form) 
 
 @app.route('/')
