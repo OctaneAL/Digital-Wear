@@ -18,35 +18,35 @@
       <form id="singup-form" method="post" action="">
         <p>
           {{ form.csrf_token }}
-          {{ form.email(id="email", placeholder="Email") }}
+          {{ form.email(id="email", type="email", placeholder="Email") }}
            <i class="validation"><span></span><span></span></i>
         </p>
         <p>
           {{ form.csrf_token }}
-          {{ form.first_name(id="First", placeholder="First name") }}
+          {{ form.first_name(id="First", type="text", placeholder="First name") }}
            <i class="validation"><span></span><span></span></i>
         </p>
         <p>
           {{ form.csrf_token }}
-          {{ form.last_name(id="Last", placeholder="Last name") }}
+          {{ form.last_name(id="Last", type="text", placeholder="Last name") }}
            <i class="validation"><span></span><span></span></i>
         </p>
         <p>
           {{ form.csrf_token }}
-          {{ form.phone(id="Phone", placeholder="Phone") }}
+          {{ form.phone(id="Phone", placeholder="Phone", type="number") }}
            <i class="validation"><span></span><span></span></i>
         </p>
         {{ form.csrf_token }}
-        {{ form.type(id="Type", placeholder="Last name") }}
+        {{ form.type(id="Type", placeholder="User Type") }}
         <i class="validation"><span></span><span></span></i>
         <p>
           {{ form.csrf_token }}
-          {{ form.password(id="password", placeholder="Password") }}
+          {{ form.password(id="password", placeholder="Password", type="password") }}
         <i class="validation"><span></span><span></span></i>
         </p>
         <p>
           {{ form.csrf_token }}
-          {{ form.password2(id="password", placeholder="Repeat password") }}
+          {{ form.password2(id="password", placeholder="Repeat password", type="password") }}
         <i class="validation"><span></span><span></span></i>
         </p>
         <p>

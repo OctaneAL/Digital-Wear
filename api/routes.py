@@ -11,19 +11,26 @@ bcrypt = Bcrypt(app)
 def load_user(user_id):
     return Client.query.get(int(user_id))
 
+@app.route('/')
+def home():
+    return render_template("base.html")
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    user = Client.query.get(2)
+    if user is not None:
+        pass
     form = UserLogin()
     if form.validate_on_submit():
         user = Client.query.filter_by(email = form.email.data).first()
         if not user:
             pass # There is no user with this email, flash error
         else:
-            if not Bcrypt.check_password_hash(user.password, form.password.data):
+            if not Bcrypt.check_password_hash(bcrypt, user.password, form.password.data):
                 pass # Wrong password, flash error
             else:
                 login_user(user)
-                return redirect(url_for('main')) 
+                return redirect(url_for('home')) 
     return render_template('login.html', form=form) 
 
 
@@ -32,7 +39,7 @@ def register():
     form = UserRegister()
 
     if form.validate_on_submit():
-        hashed_password = bcrypt.generate_password_hash(form.password.data)
+        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
         new_user = Client(
             email = form.email.data,
             first_name = form.first_name.data,
@@ -48,6 +55,3 @@ def register():
 
     return render_template('register.html', form=form) 
 
-@app.route('/')
-def main():
-    return render_template("base.html")
