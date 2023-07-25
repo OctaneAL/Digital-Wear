@@ -3,6 +3,7 @@ from wtforms import StringField, SubmitField, validators, PasswordField, SelectF
 import phonenumbers
 from api.models import UserType, Client
 from api import app
+from flask import flash
 
 class UserRegister(FlaskForm):
     email = StringField(
@@ -16,20 +17,21 @@ class UserRegister(FlaskForm):
         'First Name',
         validators=[
             validators.DataRequired(),
-            validators.Length(min = 3, message = 'First Name must be at least 3 characters long.'),
+            validators.Length(min = 3,max = 30, message = 'First name must be at least 3 characters long and no more than 30.'),
         ],
     )
     last_name = StringField(
         'Last Name',
         validators=[
             validators.DataRequired(),
-            validators.Length(min = 2, message = 'Last Name must be at least 2 characters long.'),
+            validators.Length(min = 3,max = 30, message = 'Last name must be at least 3 characters long and no more than 30.'),
         ],
     )
     phone = StringField(
         'Phone Number',
         validators=[
             validators.DataRequired(),
+            validators.Length(min=6, max=10, message="Phone number must be at least 4 characters and no more than 10")
         ],
     )
 
@@ -47,7 +49,7 @@ class UserRegister(FlaskForm):
         "Enter password",
         validators=[
             validators.DataRequired(),
-            validators.Length(min=4, max=80),
+            validators.Length(min=4, max=80, message="Password must be at least 4 and no more than 80 characters"),
             validators.EqualTo('password2', message = 'Passwords must match')
         ],
     )
@@ -63,6 +65,7 @@ class UserRegister(FlaskForm):
     def validate_email(self, email):
         exists = Client.query.filter_by(email=email.data).first() is not None
         if exists:
+            flash("This email has been already registered", category="error")
             raise validators.ValidationError('Email is already taken')
 
     # def validate_phone(self, phone):
@@ -75,6 +78,8 @@ class UserRegister(FlaskForm):
     
     def generate_auth_token():
         pass # todo???
+
+
 
 class UserLogin(FlaskForm):
     email = StringField(

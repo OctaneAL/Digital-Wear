@@ -17,9 +17,6 @@ def home():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    user = Client.query.get(2)
-    if user is not None:
-        pass
     form = UserLogin()
     if form.validate_on_submit():
         user = Client.query.filter_by(email = form.email.data).first()
@@ -39,20 +36,25 @@ def login():
 def register():
     form = UserRegister()
     if form.validate_on_submit():
-        user = Client.query.filter_by(email = form.email.data).first()
-        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-        new_user = Client(
-            email = form.email.data,
-            first_name = form.first_name.data,
-            last_name = form.last_name.data,
-            phone = form.phone.data,
-            client_type_id = form.type.data,
-            password = hashed_password,
-        )
-        db.session.add(new_user)
-        db.session.commit()
+        user = Client.query.filter_by(phone=form.phone.data).first()
+        print(user)
+        if user != None:
+            flash("This phone number has been registered", category="error")
+            pass
+        else:
+            hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+            new_user = Client(
+                email = form.email.data,
+                first_name = form.first_name.data,
+                last_name = form.last_name.data,
+                phone = form.phone.data,
+                client_type_id = form.type.data,
+                password = hashed_password,
+            )
+            db.session.add(new_user)
+            db.session.commit()
 
-        return redirect(url_for('login')) 
+            return redirect(url_for('login')) 
 
     return render_template('register.html', form=form) 
 
