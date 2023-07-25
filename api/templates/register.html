@@ -54,6 +54,9 @@
           {{ form.submit(id = "login", value = "Register") }}
         </p>
       </form>
+      {% for cat, msg in get_flashed_messages(True) %}
+      <div class = "flash {{cat}}">{{msg}}</div>
+       {% endfor %}
     </div>
     <!--login-form-wrap-->
     <!-- partial -->

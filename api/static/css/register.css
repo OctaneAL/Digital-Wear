@@ -207,3 +207,14 @@ input[type="submit"] {
 input::-webkit-input-placeholder {
   color: #7ba79a;
 }
+
+.flash {padding: 10px;}
+.flash.success {
+  border: 1px solid #21DB56;
+  background: #AEFFC5;
+}
+
+.flash.error {
+  border: 1px solid #ff4343;
+  background: #FF9C9C;
+}

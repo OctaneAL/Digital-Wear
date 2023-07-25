@@ -3,7 +3,7 @@ from api.forms import UserLogin, UserRegister
 from api.models import Client
 from flask_bcrypt import Bcrypt
 from flask_login import login_user
-from flask import redirect, render_template, url_for
+from flask import redirect, render_template, url_for, flash
 
 bcrypt = Bcrypt(app)
 
@@ -24,11 +24,12 @@ def login():
     if form.validate_on_submit():
         user = Client.query.filter_by(email = form.email.data).first()
         if not user:
-            pass # There is no user with this email, flash error
+            flash("You have not been registered", category="error")
         else:
             if not Bcrypt.check_password_hash(bcrypt, user.password, form.password.data):
-                pass # Wrong password, flash error
+                flash("Wrong password", category="error")
             else:
+                flash("You have been successfully logined", category="success")
                 login_user(user)
                 return redirect(url_for('home')) 
     return render_template('login.html', form=form) 
@@ -37,8 +38,8 @@ def login():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     form = UserRegister()
-
     if form.validate_on_submit():
+        user = Client.query.filter_by(email = form.email.data).first()
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
         new_user = Client(
             email = form.email.data,

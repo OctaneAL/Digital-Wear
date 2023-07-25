@@ -13,6 +13,7 @@
   </head>
   <body>
     <!-- partial:index.partial.html -->
+    {% block content %}
     <div id="login-form-wrap">
       <form id="login-form " method="post" action="">
         <p>
@@ -30,8 +31,12 @@
           {{ form.submit(id = "login", value = "Login") }}
         </p>
       </form>
+    {% for cat, msg in get_flashed_messages(True) %}
+    <div class = "flash {{cat}}">{{msg}}</div>
+    {% endfor %}
     </div>
     <!--login-form-wrap-->
     <!-- partial -->
+    {% endblock %}
   </body>
 </html>
