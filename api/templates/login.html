@@ -13,7 +13,9 @@
   </head>
   <body>
     <!-- partial:index.partial.html -->
-    
+    {% block navbar %}
+    {% endblock %}
+
     {% block content %}
     <div id="login-form-wrap">
       <form id="login-form " method="post" action="">

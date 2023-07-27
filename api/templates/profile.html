@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .username{
+            display: flex;
+            align-items: center;
+            color: #000;
+            margin: 0 !important;
+            font-family: Inria Sans;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;       
+        }
+        .edit{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+            background: #7BA79A;
+            color: #F5F5F5;
+            text-align: center;
+            font-family: Inria Sans;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+        .nameholder{
+            display: flex;
+            flex-direction: column;
+
+            margin-left: 30px;
+            gap:0px;
+        }
+        .bio{
+            margin: 0 !important;
+        }
+        :root {
+            font-size: 10px;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Open Sans", Arial, sans-serif;
+            min-height: 100vh;
+            background-color: #fafafa;
+            color: #262626;
+            padding-bottom: 3rem;
+        }
+
+        img {
+            display: block;
+        }
+
+        .container {
+            max-width: 93.5rem;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        
+        .visually-hidden {
+            position: absolute !important;
+            height: 1px;
+            width: 1px;
+            overflow: hidden;
+            clip: rect(1px, 1px, 1px, 1px);
+        }
+
+        /* Profile Section */
+
+        
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            margin: -1rem -1rem;
+            padding-bottom: 3rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            flex: 1 0 22rem;
+            margin: 1rem;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover .gallery-item-info,
+        .gallery-item:focus .gallery-item-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .gallery-item-info {
+            display: none;
+        }
+
+        .gallery-item-info li {
+            display: inline-block;
+            font-size: 1.7rem;
+            font-weight: 600;
+        }
+
+        .gallery-item-likes {
+            margin-right: 2.2rem;
+        }
+        
+        .gallery-item-type {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2.5rem;
+            text-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.1);
+        }
+        .fa-clone,
+        .fa-comment {
+            transform: rotateY(180deg);
+        }
+
+        
+
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Loader */
+
+        .loader {
+            width: 5rem;
+            height: 5rem;
+            border: 0.6rem solid #999;
+            border-bottom-color: transparent;
+            border-radius: 50%;
+            margin: 0 auto;
+            animation: loader 500ms linear infinite;
+        }
+
+        /* Media Query */
+
+       
+
+        @keyframes loader {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+
+        @supports (display: grid) {
+
+            .gallery {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+                grid-gap: 2rem;
+            }
+
+            .gallery-item,
+            .gallery {
+                width: auto;
+                margin: 0;
+            }
+
+        }
+
+        @media (min-width: 0px) {
+            .username{
+                font-size: 6.250vw;
+            }
+            .bio{
+                font-size: 5vw;
+                height: 50%;
+            }
+            .edit{
+                width: 16.25%;
+                height: 25%;
+                padding: 10px 19px;
+                gap: -19px;
+                border-radius: 8px;
+                font-size: 4vw;
+            }
+            .icon{
+                padding-left: 6.6%;
+                width:18.75%;
+                height:18.75%;
+            }
+            .info{
+                padding-left: 6.25%;
+                width: 100%;
+            }
+            .container
+            {
+                padding-top: 4.6%;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .username{
+                font-size: 2.5vw;
+            }
+            .bio{
+                font-size: 2.083vw;
+                height: 48%;
+            }
+            .edit{
+                width: 10%;
+                height: 20.4%;
+                padding: 10px 19px;
+                gap: -19px;
+                border-radius: 35px;
+                font-size: 1.875vw;
+            }
+            .icon{
+                padding-left: 7.1%;
+                width:13%;
+                height:13%;
+            }
+            .info{
+                padding-left: 2.5%;
+                width: 100%;
+            }
+            .container
+            {
+                padding-top: 4.6%;
+            }
+        }
+
+        @media (min-width: 992px) { }
+
+        @media (min-width: 1200px) {  }
+
+        @media (min-width: 1400px) {  }
+        
+    </style>
+</head>
+<body>
+    <div style = "padding-top: 3%; display: flex;">
+        <svg class="icon" viewBox="0 0 250 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="125" cy="125" r="125" fill="#00583F"/>
+            <path d="M179.104 83.1369C179.104 107.917 156.955 128.396 129.127 128.396C101.299 128.396 79.1509 107.917 79.1509 83.1369C79.1509 58.3572 101.299 37.8774 129.127 37.8774C156.955 37.8774 179.104 58.3572 179.104 83.1369Z" stroke="#F5F5F5" stroke-width="5"/>
+            <path d="M219.196 202.241C219.196 213.964 209.566 225.259 192.434 233.773C175.456 242.21 151.825 247.5 125.587 247.5C99.3497 247.5 75.7193 242.21 58.7411 233.773C41.6088 225.259 31.979 213.964 31.979 202.241C31.979 190.517 41.6088 179.222 58.7411 170.708C75.7193 162.271 99.3497 156.981 125.587 156.981C151.825 156.981 175.456 162.271 192.434 170.708C209.566 179.222 219.196 190.517 219.196 202.241Z" stroke="#F5F5F5" stroke-width="5"/>
+        </svg>
+        <div class="info">
+            <p class = "username">Username</p>
+            <p class = "bio">Bio:</p>
+            <button class="edit">Edit</button>
+        </div>
+    </div>
+    <div class="container">
+
+		<div class="container">
+
+            <div class="gallery">
+    
+                <div class="gallery-item" tabindex="0">
+    
+                    <img src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop" class="gallery-image" alt="">
+    
+                    <div class="gallery-item-info">
+    
+                        <ul>
+                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> </li>
+                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> </li>
+                        </ul>
+    
+                    </div>
+    
+                </div>
+    
+                <div class="gallery-item" tabindex="0">
+    
+                    <img src="https://images.unsplash.com/photo-1497445462247-4330a224fdb1?w=500&h=500&fit=crop" class="gallery-image" alt="">
+    
+                    <div class="gallery-item-info">
+    
+                        <ul>
+                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> </li>
+                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> </li>
+                        </ul>
+    
+                    </div>
+    
+                </div>
+    
+                <div class="gallery-item" tabindex="0">
+    
+                    <img src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=500&h=500&fit=crop" class="gallery-image" alt="">
+    
+                    <div class="gallery-item-type">
+    
+                        <span class="visually-hidden">Gallery</span><i class="fas fa-clone" aria-hidden="true"></i>
+    
+                    </div>
+    
+                    <div class="gallery-item-info">
+    
+                        <ul>
+                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> </li>
+                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> </li>
+                        </ul>
+    
+                    </div>
+    
+                </div>
+    
+                <div class="gallery-item" tabindex="0">
+    
+                    <img src="https://images.unsplash.com/photo-1502630859934-b3b41d18206c?w=500&h=500&fit=crop" class="gallery-image" alt="">
+    
+                    <div class="gallery-item-type">
+    
+                        <span class="visually-hidden">Video</span><i class="fas fa-video" aria-hidden="true"></i>
+    
+                    </div>
+    
+                    <div class="gallery-item-info">
+    
+                        <ul>
+                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> </li>
+                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> </li>
+                        </ul>
+    
+                    </div>
+    
+                </div>
+    
+                <div class="gallery-item" tabindex="0">
+    
+                    <img src="https://images.unsplash.com/photo-1498471731312-b6d2b8280c61?w=500&h=500&fit=crop" class="gallery-image" alt="">
+    
+                    <div class="gallery-item-type">
+    
+                        <span class="visually-hidden">Gallery</span><i class="fas fa-clone" aria-hidden="true"></i>
+    
+                    </div>
+    
+                    <div class="gallery-item-info">
+    
+                        <ul>
+                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> </li>
+                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> </li>
+                        </ul>
+    
+                    </div>
+    
+                </div>
+    
+                <div class="gallery-item" tabindex="0">
+    
+                    <img src="https://images.unsplash.com/photo-1515023115689-589c33041d3c?w=500&h=500&fit=crop" class="gallery-image" alt="">
+    
+                    <div class="gallery-item-info">
+    
+                        <ul>
+                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> </li>
+                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> </li>
+                        </ul>
+    
+                    </div>
+    
+                </div>
+    
+                <div class="gallery-item" tabindex="0">
+    
+                    <img src="https://images.unsplash.com/photo-1504214208698-ea1916a2195a?w=500&h=500&fit=crop" class="gallery-image" alt="">
+    
+                    <div class="gallery-item-type">
+    
+                        <span class="visually-hidden">Gallery</span><i class="fas fa-clone" aria-hidden="true"></i>
+    
+                    </div>
+    
+                    <div class="gallery-item-info">
+    
+                        <ul>
+                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> </li>
+                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> </li>
+                        </ul>
+    
+                    </div>
+    
+                </div>
+    
+                <div class="gallery-item" tabindex="0">
+    
+                    <img src="https://images.unsplash.com/photo-1515814472071-4d632dbc5d4a?w=500&h=500&fit=crop" class="gallery-image" alt="">
+    
+                    <div class="gallery-item-info">
+    
+                        <ul>
+                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> </li>
+                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> </li>
+                        </ul>
+    
+                    </div>
+    
+                </div>
+    
+                <div class="gallery-item" tabindex="0">
+    
+                    <img src="https://images.unsplash.com/photo-1511407397940-d57f68e81203?w=500&h=500&fit=crop" class="gallery-image" alt="">
+    
+                    <div class="gallery-item-type">
+    
+                        <span class="visually-hidden">Gallery</span><i class="fas fa-clone" aria-hidden="true"></i>
+    
+                    </div>
+    
+                    <div class="gallery-item-info">
+    
+                        <ul>
+                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> </li>
+                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> </li>
+                        </ul>
+    
+                    </div>
+    
+                </div>
+    
+                <div class="gallery-item" tabindex="0">
+    
+                    <img src="https://images.unsplash.com/photo-1518481612222-68bbe828ecd1?w=500&h=500&fit=crop" class="gallery-image" alt="">
+    
+                    <div class="gallery-item-info">
+    
+                        <ul>
+                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> </li>
+                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> </li>
+                        </ul>
+    
+                    </div>
+    
+                </div>
+    
+                <div class="gallery-item" tabindex="0">
+    
+                    <img src="https://images.unsplash.com/photo-1505058707965-09a4469a87e4?w=500&h=500&fit=crop" class="gallery-image" alt="">
+    
+                    <div class="gallery-item-info">
+    
+                        <ul>
+                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> </li>
+                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> </li>
+                        </ul>
+    
+                    </div>
+    
+                </div>
+    
+                <div class="gallery-item" tabindex="0">
+    
+                    <img src="https://images.unsplash.com/photo-1423012373122-fff0a5d28cc9?w=500&h=500&fit=crop" class="gallery-image" alt="">
+    
+                    <div class="gallery-item-type">
+    
+                        <span class="visually-hidden">Video</span><i class="fas fa-video" aria-hidden="true"></i>
+    
+                    </div>
+    
+                    <div class="gallery-item-info">
+    
+                        <ul>
+                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> </li>
+                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> </li>
+                        </ul>
+    
+                    </div>
+    
+                </div>
+    
+            </div>
+            <div class="loader"></div>
+</body>
+</html>
