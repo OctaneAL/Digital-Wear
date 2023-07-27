@@ -14,6 +14,8 @@
   <body>
     
     <!-- partial:index.partial.html -->
+    
+    {% block content %}
     <div id="singup-form-wrap">
       <form id="singup-form" method="post" action="">
         <p>
@@ -60,5 +62,6 @@
     </div>
     <!--login-form-wrap-->
     <!-- partial -->
+    {% endblock %}
   </body>
 </html>

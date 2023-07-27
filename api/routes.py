@@ -2,10 +2,11 @@ from api import db, app, login_manager
 from api.forms import UserLogin, UserRegister
 from api.models import Client
 from flask_bcrypt import Bcrypt
-from flask_login import login_user
-from flask import redirect, render_template, url_for, flash
+from flask_login import login_user, login_required, logout_user, current_user
+from flask import redirect, render_template, url_for, flash, request
 
 bcrypt = Bcrypt(app)
+login_manager.login_view = 'login'
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -13,21 +14,22 @@ def load_user(user_id):
 
 @app.route('/')
 def home():
-    return render_template("base.html")
+    return render_template("main.html")
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = UserLogin()
     if form.validate_on_submit():
         user = Client.query.filter_by(email = form.email.data).first()
+        flash('')
         if not user:
             flash("You have not been registered", category="error")
         else:
             if not Bcrypt.check_password_hash(bcrypt, user.password, form.password.data):
                 flash("Wrong password", category="error")
             else:
-                flash("You have been successfully logined", category="success")
-                login_user(user)
+                rm = True if request.form.get("remember") else False
+                login_user(user, remember=rm)
                 return redirect(url_for('home')) 
     return render_template('login.html', form=form) 
 
@@ -37,7 +39,7 @@ def register():
     form = UserRegister()
     if form.validate_on_submit():
         user = Client.query.filter_by(phone=form.phone.data).first()
-        print(user)
+        flash('')
         if user != None:
             flash("This phone number has been registered", category="error")
             pass
@@ -57,4 +59,21 @@ def register():
             return redirect(url_for('login')) 
 
     return render_template('register.html', form=form) 
+
+@app.route('/log_out')
+def log_out():
+    logout_user()
+    flash('')
+    return redirect(url_for("login"))
+
+
+@app.route('/add_post', methods = ['GET', 'POST'])
+@login_required
+def add_post():
+    return "В розробці"
+
+@app.route('/profile')
+@login_required
+def profile():
+    return "В розробці"
 

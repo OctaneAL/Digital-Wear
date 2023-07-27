@@ -13,6 +13,7 @@
   </head>
   <body>
     <!-- partial:index.partial.html -->
+    
     {% block content %}
     <div id="login-form-wrap">
       <form id="login-form " method="post" action="">
@@ -25,6 +26,9 @@
           {{ form.csrf_token }}
           {{ form.password(id="password",class="password", type = "password",  placeholder="Password") }}
            <i class="validation"><span></span><span></span></i>
+        </p>
+        <p id = "checkbox">
+          <input type="checkbox" name="remember" /> Remember me
         </p>
         <p>
           {{ form.csrf_token }}

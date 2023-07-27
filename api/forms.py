@@ -82,6 +82,7 @@ class UserRegister(FlaskForm):
 
 
 class UserLogin(FlaskForm):
+
     email = StringField(
         'Email',
         validators=[
@@ -97,3 +98,12 @@ class UserLogin(FlaskForm):
         ],
     )
     submit = SubmitField('Login')
+
+    def is_authenticated(self):
+        return True
+    
+    def is_active(self):
+        return True
+    
+    def is_anonymous(self):
+        return False

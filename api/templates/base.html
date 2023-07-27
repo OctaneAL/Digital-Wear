@@ -66,7 +66,7 @@
           line-height: 38px;
           text-align: left !important;
           align-items: center;
-          color: #00583F !important;" class="nav-link" href="#">+</a>
+          color: #00583F !important;" class="nav-link" href="{{url_for('add_post')}}">+</a>
         </li>
         
       </ul>
@@ -82,10 +82,10 @@
               
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="{{url_for('register')}}">Register</a>
+            <a class="dropdown-item" href="{{url_for('login')}}">Login</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Log out</a>
+            <a class="dropdown-item" href="{{url_for('log_out')}}">Log out</a>
           </div>
         </div>
       </div>
