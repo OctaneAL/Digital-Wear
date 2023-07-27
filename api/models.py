@@ -53,8 +53,11 @@ class FavouriteProducts(db.Model):
     product = db.relationship('Product', back_populates='favourite_products')
     client = db.relationship('Client', back_populates='favourite_products')
 
-    def __init__(self, name):
+    def __init__(self, name,registered,product_id,client_id):
         self.name = name
+        self.registered = registered
+        self.product_id = product_id
+        self.client_id = client_id
 
 class Product(db.Model):
     __tablename__ = "Product"
@@ -71,8 +74,11 @@ class Product(db.Model):
     favourite_products = db.relationship('FavouriteProducts', back_populates='product')
     client = db.relationship('Client', back_populates='product')
 
-    def __init__(self, name):
+    def __init__(self, name, description, product_type_id, cliend_id):
         self.name = name
+        self.description = description
+        self.product_type_id = product_type_id
+        self.cliend_id = cliend_id
 
 class ProductType(db.Model):
     __tablename__ = "ProductType"

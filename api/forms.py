@@ -67,7 +67,12 @@ class UserRegister(FlaskForm):
         if exists:
             flash("This email has been already registered", category="error")
             raise validators.ValidationError('Email is already taken')
-
+        
+    def validate_phone(self, phone):
+        exists = Client.query.filter_by(phone=phone.data).first() is not None
+        if exists:
+            flash("This phone number has been registered", category="error")
+            raise validators.ValidationError('Email is already taken')
     # def validate_phone(self, phone):
     #     try:
     #         p = phonenumbers.parse(phone.data)
