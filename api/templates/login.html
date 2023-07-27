@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
   <head>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -11,11 +11,9 @@
     <title>HTML5 Login Form with validation Example</title>
     <link type="text/css" href="{{ url_for('static', filename = 'css/login.css') }}" rel = "stylesheet"/>
   </head>
-  <body>
+  <body> -->
     <!-- partial:index.partial.html -->
-    {% block navbar %}
-    {% endblock %}
-
+{% extends "base.html" %}
     {% block content %}
     <div id="login-form-wrap">
       <form id="login-form " method="post" action="">
@@ -44,5 +42,5 @@
     <!--login-form-wrap-->
     <!-- partial -->
     {% endblock %}
-  </body>
-</html>
+  <!-- </body>
+</html> -->
