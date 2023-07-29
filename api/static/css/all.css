@@ -1,0 +1,605 @@
+/*ADD POST*/
+/*ADD POST*//*ADD POST*/
+/*ADD POST*/
+/*ADD POST*/
+/*ADD POST*/
+/*ADD POST*/
+/*ADD POST*/
+/*ADD POST*/
+
+
+
+
+/* .div-1{
+    margin-top: 12%;
+    margin-left: 58%;
+    margin-right: 0%;
+} */
+
+.add1 {
+    width: 17%;
+    display: inline-block;
+    position: absolute;
+    left: 65%;
+    bottom: 15%;
+    padding-top: 1.3%;
+    padding-bottom: 1.3%;
+    flex-shrink: 0;
+    font-size: 36px;
+    /* margin-top: 15%;
+    margin-left: 22.2%; */
+    border-radius: 30px;
+    background: #00583F;
+    color: #f5f5f5;
+}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:#7BA79A;
+}
+
+.description1 {
+    resize: none;
+    font-size: 36px;
+    position: absolute;
+    left: 56.5%;
+    bottom: 30%;
+    /* margin-left: 55%;
+    margin-top: 10%; */
+}
+
+.name1 {
+    resize: none;
+    font-size: 36px;
+    position: absolute;
+    left: 56.5%;
+    bottom: 79%;
+    /* margin-left: 55%;
+    margin-top: 10%; */
+}
+
+.select1 {
+    resize: none;
+    font-size: 36px;
+    width: 32.4%;
+    color: #7BA79A;
+    position: absolute;
+    left: 56.5%;
+    bottom: 73%;
+    /* margin-left: 55%;
+    margin-top: 10%; */
+}
+
+.pole1 {
+    resize: none;
+    font-size: 36px;
+    width: 32.05%;
+    color: #7BA79A;
+    position: absolute;
+    left: 56.5%;
+    bottom: 67%;
+    /* margin-left: 55%;
+    margin-top: 10%; */
+}
+
+/* input[type=file] {
+    visibility: hidden;
+  }  */
+
+.label1 { 
+    padding-top:17%;
+    padding-bottom:17%;
+    padding-right:10%;
+    padding-left:10%;
+    background: silver;
+    border: #d37739;
+    position: absolute;
+    left: 23%;
+    top:12%;
+}
+.label1 > input[type=file] {
+    display: none;
+    
+}
+
+.back1{
+    background:#00583F; 
+    width: 3%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    position: absolute;
+    left:2% ;
+    top:1%;
+    border-radius: 35px;
+}
+
+.his {
+    border: solid #F5F5F5;
+    border-width: 0 3px 3px 0;
+    position: absolute;
+    background: none;
+    left:3% ;
+    top: 3.5%;
+    z-index: 3;
+    width: 1%;
+    height: 2%;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(130deg);
+}
+
+
+
+
+
+/*ADD POST*/
+/*ADD POST*/
+/*ADD POST*/
+/*ADD POST*/
+/*ADD POST*/
+/*ADD POST*/
+/*ADD POST*/
+/*ADD POST*/
+/*ADD POST*/
+/*ADD POST*/
+
+
+
+
+
+
+/*Sing Up*/
+/*Sing Up*/
+/*Sing Up*/
+/*Sing Up*/
+/*Sing Up*/
+/*Sing Up*/
+/*Sing Up*/
+/*Sing Up*/
+/*Sing Up*/
+/*Sing Up*/
+
+
+
+
+
+
+body {
+    background-color: #f5f5f5;
+  }
+  
+  p {
+    position: relative;
+  }
+  
+  a,
+  a:link,
+  a:visited,
+  a:active {
+    color: #3ca9e2;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+  }
+  a:focus,
+  a:hover,
+  a:link:focus,
+  a:link:hover,
+  a:visited:focus,
+  a:visited:hover,
+  a:active:focus,
+  a:active:hover {
+    color: #329dd5;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+  }
+  
+  #singup-form-wrap2 {
+    width: 559px;
+    height: 767px;
+    flex-shrink: 0;
+    background: #00583f;
+    margin: 30px auto;
+    padding: 20px 0 0 0;
+    border-radius: 45px;
+  }
+  
+  #singup-form2 {
+    padding: 0 60px;
+    color: #7ba79a;
+  }
+  
+  input {
+    border-radius: 25px;
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    outline: none;
+  }
+  
+  input[type="text"]:focus,
+  input[type="email"]:focus {
+    border-color: #3ca9e2;
+  }
+  input[type="text"]:focus:invalid,
+  input[type="email"]:focus:invalid {
+    color: #cc1e2b;
+    border-color: #cc1e2b;
+  }
+  input[type="text"]:valid ~ .validation,
+  input[type="email"]:valid ~ .validation {
+    display: block;
+    border-color: #0c0;
+  }
+  input[type="text"]:valid ~ .validation span,
+  input[type="email"]:valid ~ .validation span {
+    background: #0c0;
+    position: absolute;
+    border-radius: 6px;
+  }
+  input[type="text"]:valid ~ .validation span:first-child,
+  input[type="email"]:valid ~ .validation span:first-child {
+    top: 30px;
+    left: 14px;
+    width: 20px;
+    height: 3px;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+  }
+  input[type="text"]:valid ~ .validation span:last-child,
+  input[type="email"]:valid ~ .validation span:last-child {
+    top: 35px;
+    left: 8px;
+    width: 11px;
+    height: 3px;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+  
+  .validation2 {
+    display: none;
+    position: absolute;
+    content: " ";
+    height: 60px;
+    width: 30px;
+    right: 15px;
+    top: 0px;
+  }
+  
+  input[type="submit"] {
+    color: #00583f;
+    background: #7ba79a;
+    height: 90px;
+    width: 300px;
+    text-align: center;
+    font-family: Inria Sans;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    flex: 1 0 0;
+    position: relative;
+    top: 20px;
+    left: 70px;
+    border-radius: 35px;
+  }
+  
+  #email2{
+    color: #7ba79a;
+    font-family: Inria Sans;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    background: #f5f5f5;
+    height: 70px;
+    z-index: 3;
+    position: relative;
+    top: 1px;
+  }
+  
+  #Last2{
+    color: #7ba79a;
+    font-family: Inria Sans;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    background: #f5f5f5;
+    height: 70px;
+    z-index: 3;
+    position: relative;
+    top: 5px;
+  }
+  
+  #First2{
+    color: #7ba79a;
+    font-family: Inria Sans;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    background: #f5f5f5;
+    height: 70px;
+    z-index: 3;
+    position: relative;
+    top: 5px;
+  }
+  
+  #Phone2{
+    color: #7ba79a;
+    font-family: Inria Sans;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    background: #f5f5f5;
+    height: 70px;
+    z-index: 3;
+    position: relative;
+    top: 5px;
+  }
+  
+  #Type2{
+    color: #7ba79a;
+    font-family: Inria Sans;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    background: #f5f5f5;
+    height: 70px;
+    width: 439px;
+    z-index: 3;
+    border-radius: 25px;
+    position: relative;
+    top: 5px;
+  }
+  
+  #password2 {
+    color: #7ba79a;
+    font-family: Inria Sans;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    background: #f5f5f5;
+    height: 70px;
+    z-index: 3;
+    position: relative;
+    top: 5px;
+  }
+  
+  
+  input::-webkit-input-placeholder {
+    color: #7ba79a;
+  }
+  
+
+
+
+
+
+
+
+/*Sing Up*/
+/*Sing Up*/
+/*Sing Up*/
+/*Sing Up*/
+/*Sing Up*/
+/*Sing Up*/
+/*Sing Up*/
+/*Sing Up*/
+/*Sing Up*/
+
+
+
+
+
+
+
+
+
+
+/*Log In*/
+/*Log In*/
+/*Log In*/
+/*Log In*/
+/*Log In*/
+/*Log In*/
+/*Log In*/
+/*Log In*/
+/*Log In*/
+
+
+
+.body3 {
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .form3 {
+    width: 70%;
+    height: 70%;
+  }
+  
+  p {
+    position: relative;
+  }
+  
+  a,
+  a:link,
+  a:visited,
+  a:active {
+    color: #3ca9e2;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+  }
+  a:focus,
+  a:hover,
+  a:link:focus,
+  a:link:hover,
+  a:visited:focus,
+  a:visited:hover,
+  a:active:focus,
+  a:active:hover {
+    color: #329dd5;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+  }
+  
+  #login-form-wrap3 {
+    height: 30%;
+    width: 21%;
+    display: flex;
+    justify-content: center;
+    padding-left: 3.5%;
+    padding-right: 3.5%;
+    padding-top: 1%;
+    padding-bottom: 10%;
+    flex-shrink: 0;
+    background: #00583f;
+    margin-left:2%;
+    margin-right:2%;
+    margin-top: 5%;
+    border-radius: 45px;
+  }
+  
+  #login-form3 {
+    width: 100%;
+    padding-left: 10%;
+    padding-right: 10%;
+    color: #7ba79a;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  input {
+    /* width: 100%; */
+    border-radius: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    justify-content: center;
+    box-sizing: border-box;
+    outline: none;
+  }
+  
+  #email3 {
+    width: 100%;
+    color: #7ba79a;
+    font-family: Inria Sans;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    background: #f5f5f5;
+    margin-top: 35%;
+    /* margin-left: auto;
+    margin-right: auto; */
+    padding-top: 6.5%;
+    padding-bottom: 6.5%;
+    padding-left: 4%;
+    z-index: 3;
+  }
+  
+  .password3 {
+    width: 100%;
+    color: #7ba79a;
+    font-family: Inria Sans;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    background: #f5f5f5;
+    margin-top: 1%;
+    /* margin-left: auto;
+    margin-right: auto; */
+    padding-top: 6.5%;
+    padding-bottom: 6.5%;
+    padding-left: 4%;
+    z-index: 3;
+  }
+  
+  input[type="text"]:focus,
+  input[type="email"]:focus {
+    border-color: #3ca9e2;
+  }
+  input[type="text"]:focus:invalid,
+  input[type="email"]:focus:invalid {
+    
+    color: #cc1e2b;
+    border-color: #cc1e2b;
+  }
+  input[type="text"]:valid ~ .validation,
+  input[type="email"]:valid ~ .validation {
+    display: block;
+    border-color: #0c0;
+  }
+  input[type="text"]:valid ~ .validation span:first-child,
+  input[type="email"]:valid ~ .validation span:first-child {
+    top: 30px;
+    left: 14px;
+    width: 20px;
+    height: 3px;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+  }
+  input[type="text"]:valid ~ .validation span:last-child,
+  input[type="email"]:valid ~ .validation span:last-child {
+    top: 35px;
+    left: 8px;
+    width: 11px;
+    height: 3px;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+  
+  .validation3 {
+    display: none;
+    position: absolute;
+    content: " ";
+    height: 60px;
+    width: 30px;
+    right: 15px;
+    top: 0px;
+  }
+  
+  #login3 {
+    width: 95%;
+    color: #00583f;
+    background: #7ba79a;
+    height: 98px;
+    text-align: center;  
+    font-family: Inria Sans;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal; 
+    z-index: 3;
+    margin-top: 25%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 35px;
+  }
+  
+  input::-webkit-input-placeholder {
+    color: #7ba79a;
+  }
+  
+  @media (max-wight: 600px) {
+    body {
+      padding: 20%;
+    }
+  }
+  
+
+
+
+
+/*Log In*/
+/*Log In*/
+/*Log In*/
+/*Log In*/
+/*Log In*/
+/*Log In*/
+/*Log In*/
