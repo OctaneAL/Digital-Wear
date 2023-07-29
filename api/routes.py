@@ -69,5 +69,11 @@ def add_post():
 @app.route('/profile')
 @login_required
 def profile():
-    return render_template("profile.html")
-
+    print(current_user.first_name)
+    context = {
+        'first_name': current_user.first_name,
+        'last_name': current_user.last_name,
+        'email': current_user.email,
+        'phone': current_user.phone,
+    }
+    return render_template("profile.html", context = context)
