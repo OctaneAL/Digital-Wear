@@ -14,7 +14,11 @@ def load_user(user_id):
 
 @app.route('/')
 def home():
-    return render_template("main.html", user = current_user)
+    context = {
+        'posts': [Product.query.all()]*8
+    }
+    print(context['posts'])
+    return render_template("home.html", user = current_user, context = context)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -77,6 +81,10 @@ def add_post():
         db.session.commit()
         return redirect(url_for('profile')) 
     return render_template("addpost.html", form=form)
+
+@app.route('/post/<int:id>')
+def post(id):
+    pass
 
 @app.route('/profile')
 @login_required
