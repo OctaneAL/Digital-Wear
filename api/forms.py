@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, validators, PasswordField, SelectField, URLField
+from wtforms import StringField, SubmitField, validators, PasswordField, SelectField, URLField, TextAreaField, FileField
 import phonenumbers
-from api.models import UserType, Client
+from api.models import UserType, Client, ProductType
 from api import app
 from flask import flash
 from flask_login import current_user
@@ -73,7 +73,7 @@ class UserRegister(FlaskForm):
         exists = Client.query.filter_by(phone=phone.data).first() is not None
         if exists:
             flash("This phone number has been registered", category="error")
-            raise validators.ValidationError('Email is already taken')
+            raise validators.ValidationError('Phone is already taken')
     # def validate_phone(self, phone):
     #     try:
     #         p = phonenumbers.parse(phone.data)
@@ -138,15 +138,89 @@ class CreatePost(FlaskForm):
         'Website'
     )
 
-    description = StringField(
-        'Description',
+    submit = SubmitField('submit')
+
+    def is_authenticated(self):
+        return current_user.is_authenticated
+
+
+
+class UpdateUser(FlaskForm):
+    email = StringField(
+        'Email',
         validators=[
             validators.DataRequired(),
-            validators.Length(max=600, message = 'Description must be no more than 600 characters.'),
+            validators.Email(),
         ],
+    )
+
+    first_name = StringField(
+        'First Name',
+        validators=[
+            validators.DataRequired(),
+            validators.Length(min = 3,max = 30, message = 'First name must be at least 3 characters long and no more than 30.'),
+        ],
+    )
+    
+    last_name = StringField(
+        'Last Name',
+        validators=[
+            validators.DataRequired(),
+            validators.Length(min = 3,max = 30, message = 'Last name must be at least 3 characters long and no more than 30.'),
+        ],
+    )
+    phone = StringField(
+        'Phone Number',
+        validators=[
+            validators.DataRequired(),
+            validators.Length(min=6, max=10, message="Phone number must be at least 4 characters and no more than 10")
+        ],
+    )
+
+    description = TextAreaField(
+        'Description', 
+        validators=[
+            validators.DataRequired(),
+            validators.Length(max=300, message="No more than 300 characters")
+        ],
+    )
+
+    with app.app_context():
+        types = [(user.id, user.name) for user in UserType.query.all()]
+        
+    type = SelectField(
+        'Select your profession',
+        choices = types,
+        validators=[
+            validators.DataRequired(),
+        ],
+    )
+
+    photo = FileField(
+        "Logo photo",
+    )
+
+    website = StringField(
+        'Website',
     )
 
     submit = SubmitField('submit')
 
+    def validate_email(self, email):
+        exists = Client.query.filter_by(email=email.data).first() is not None
+        if exists:
+            user =  Client.query.filter_by(email=email.data).first()
+            if user.id != current_user.id:
+                flash("This email has been already registered", category="error")
+                raise validators.ValidationError('Email is already taken')
+        
+    def validate_phone(self, phone):
+        exists = Client.query.filter_by(phone=phone.data).first() is not None
+        if exists:
+            user = Client.query.filter_by(phone=phone.data).first()
+            if user.id != current_user.id:
+                flash("This email has been already registered", category="error")
+                raise validators.ValidationError('Email is already taken')
+            
     def is_authenticated(self):
         return current_user.is_authenticated

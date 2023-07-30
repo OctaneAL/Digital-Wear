@@ -1,9 +1,12 @@
 from api import db, app, login_manager
-from api.forms import UserLogin, UserRegister, CreatePost
+from api.forms import UserLogin, UserRegister, CreatePost, UpdateUser
 from api.models import Client, Product
 from flask_bcrypt import Bcrypt
 from flask_login import login_user, login_required, logout_user, current_user
 from flask import redirect, render_template, url_for, flash, request
+from PIL import Image
+import io
+import base64
 
 bcrypt = Bcrypt(app)
 login_manager.login_view = 'login'
@@ -21,6 +24,7 @@ def login():
     form = UserLogin()
     if form.validate_on_submit():
         user = Client.query.filter_by(email = form.email.data).first()
+        print(form.email.data)
         flash('')
         if not user:
             flash("You have not been registered", category="error")
@@ -65,9 +69,7 @@ def log_out():
 @login_required
 def add_post():
     form = CreatePost()
-    print('Ne validno')
     if form.validate_on_submit():
-        print('Validno')
         flash('')
         print(form.title.data)
         print(form.description.data)
@@ -86,10 +88,47 @@ def add_post():
 @app.route('/profile')
 @login_required
 def profile():
+    image = Client.query.get(current_user.id).photo
+    if image != None:
+        image = base64.b64encode(image).decode('utf-8')
+
     context = {
         'first_name': current_user.first_name,
         'last_name': current_user.last_name,
         'email': current_user.email,
         'phone': current_user.phone,
+        'description': current_user.description,
+        'website': current_user.portfolio_url,
     }
-    return render_template("profile.html", context = context)
+    return render_template("profile.html", context = context, image = image)
+
+@app.route('/update', methods = ['GET', 'POST'])
+@login_required
+def update():
+    user = Client.query.filter_by(id = current_user.id).first()
+    form = UpdateUser(obj=user)
+    if form.validate_on_submit() and request.method == 'POST':
+        user.email = form.email.data
+        user.first_name = form.first_name.data
+        user.last_name = form.last_name.data
+        user.phone = form.phone.data
+        user.description = form.description.data
+        user.portfolio_url = form.website.data
+
+        image = form.photo.data
+        try:
+            img = Image.open(image)
+            img.thumbnail((528, 528))
+            img_byte_array = io.BytesIO()
+            img.save(img_byte_array, format='JPEG', optimize=True)
+            img_data = img_byte_array.getvalue()
+            user.photo = img_data
+        except:
+            pass
+
+        db.session.merge(user)
+        db.session.commit()
+        user = Client.query.filter_by(id = current_user.id).first()
+        return redirect(url_for('profile')) 
+    
+    return render_template("update.html", form = form)
