@@ -17,7 +17,10 @@ def load_user(user_id):
 
 @app.route('/')
 def home():
-    return render_template("main.html", user = current_user)
+    context = {
+        'posts': Product.query.all()
+    }
+    return render_template("home.html", user = current_user, context = context)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -71,8 +74,6 @@ def add_post():
     form = CreatePost()
     if form.validate_on_submit():
         flash('')
-        print(form.title.data)
-        print(form.description.data)
         new_product = Product(
             title = form.title.data,
             web_site = form.website.data,
@@ -81,9 +82,20 @@ def add_post():
         )
         db.session.add(new_product)
         db.session.commit()
-        print('good')
         return redirect(url_for('profile')) 
     return render_template("addpost.html", form=form)
+
+@app.route('/post/<int:id>')
+def post(id):
+    post = Product.query.filter_by(id=id).first()
+    if post is None:
+        return 'Nema takogo id :('
+    context = {
+        'title': post.title,
+        'web_site': post.web_site,
+        'description': post.description,
+    }
+    return render_template('post.html', context=context)
 
 @app.route('/profile')
 @login_required
