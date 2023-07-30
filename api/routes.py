@@ -65,12 +65,8 @@ def log_out():
 @login_required
 def add_post():
     form = CreatePost()
-    print('Ne validno')
     if form.validate_on_submit():
-        print('Validno')
         flash('')
-        print(form.title.data)
-        print(form.description.data)
         new_product = Product(
             title = form.title.data,
             web_site = form.website.data,
@@ -79,7 +75,6 @@ def add_post():
         )
         db.session.add(new_product)
         db.session.commit()
-        print('good')
         return redirect(url_for('profile')) 
     return render_template("addpost.html", form=form)
 
