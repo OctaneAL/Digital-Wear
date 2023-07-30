@@ -15,9 +15,8 @@ def load_user(user_id):
 @app.route('/')
 def home():
     context = {
-        'posts': [Product.query.all()]*8
+        'posts': Product.query.all()
     }
-    print(context['posts'])
     return render_template("home.html", user = current_user, context = context)
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -84,7 +83,15 @@ def add_post():
 
 @app.route('/post/<int:id>')
 def post(id):
-    pass
+    post = Product.query.filter_by(id=id).first()
+    if post is None:
+        return 'Nema takogo id :('
+    context = {
+        'title': post.title,
+        'web_site': post.web_site,
+        'description': post.description,
+    }
+    return render_template('post.html', context=context)
 
 @app.route('/profile')
 @login_required
