@@ -9,14 +9,14 @@
     />
     <meta charset="UTF-8" />
     <title>HTML5 Login Form with validation Example</title>
-    <link type="text/css" href="{{ url_for('static', filename = 'css/login.css') }}" rel = "stylesheet"/>
+    <link type="text/css" href="{{ url_for('static', filename = 'css/all.css') }}" rel = "stylesheet"/>
   </head>
   <body> -->
     <!-- partial:index.partial.html -->
 {% extends "base.html" %}
     {% block content %}
     <div id="login-form-wrap">
-      <form id="login-form " method="post" action="">
+      <form id="login-form" method="post" action="">
         <p>
           {{ form.csrf_token }}
           {{ form.email(id="email", type="email", placeholder="Email") }}
