@@ -1,6 +1,6 @@
 from api import db, app, login_manager
-from api.forms import UserLogin, UserRegister
-from api.models import Client
+from api.forms import UserLogin, UserRegister, CreatePost
+from api.models import Client, Product
 from flask_bcrypt import Bcrypt
 from flask_login import login_user, login_required, logout_user, current_user
 from flask import redirect, render_template, url_for, flash, request
@@ -41,12 +41,12 @@ def register():
         flash('')
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
         new_user = Client(
-        email = form.email.data,
-        first_name = form.first_name.data,
-        last_name = form.last_name.data,
-        phone = form.phone.data,
-        client_type_id = form.type.data,
-        password = hashed_password,
+            email = form.email.data,
+            first_name = form.first_name.data,
+            last_name = form.last_name.data,
+            phone = form.phone.data,
+            client_type_id = form.type.data,
+            password = hashed_password,
         )
         db.session.add(new_user)
         db.session.commit()
@@ -64,12 +64,28 @@ def log_out():
 @app.route('/add_post', methods = ['GET', 'POST'])
 @login_required
 def add_post():
-    return "В розробці"
+    form = CreatePost()
+    print('Ne validno')
+    if form.validate_on_submit():
+        print('Validno')
+        flash('')
+        print(form.title.data)
+        print(form.description.data)
+        new_product = Product(
+            title = form.title.data,
+            web_site = form.website.data,
+            description = form.description.data,
+            client_id = current_user.id,
+        )
+        db.session.add(new_product)
+        db.session.commit()
+        print('good')
+        return redirect(url_for('profile')) 
+    return render_template("addpost.html", form=form)
 
 @app.route('/profile')
 @login_required
 def profile():
-    print(current_user.first_name)
     context = {
         'first_name': current_user.first_name,
         'last_name': current_user.last_name,

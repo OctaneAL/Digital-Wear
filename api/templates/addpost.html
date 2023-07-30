@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+    <!-- <div>
+        <form>
+            <input class ="his" type="button" value="" onclick="history.go(-1)">
+            <p class="back1"></p>
+        </form>
+    </div> -->
+    <div class="div-11">
+        <form action="" method="post" id="addpost-form">
+            <p>
+                {{ form.csrf_token }}
+                {{ form.title(id="title", type="text", placeholder="Title (Required)", cols="30", rows="2") }}
+                <!-- , class="name1" -->
+                <i class="validation"><span></span><span></span></i>
+            </p>
+            <p>
+                {{ form.csrf_token }}
+                {{ form.type(id="type", type="text", placeholder="User Type") }}
+                <!-- , class="select1" -->
+                <i class="validation"><span></span><span></span></i>
+            </p>
+            <p>
+                {{ form.csrf_token }}
+                {{ form.website(id="website", type="text", placeholder="Website (Optional)") }} 
+                <!-- , class="pole1" -->
+                <i class="validation"><span></span><span></span></i>
+            </p>
+            <p>
+                {{ form.csrf_token }}
+                {{ form.description(id="description", type="text", placeholder="Description (Required)", cols="30", rows="8") }}
+                <!-- , class="description1" -->
+                <i class="validation"><span></span><span></span></i>
+            </p>
+            <p>
+                {{ form.csrf_token }}
+                {{ form.submit(id = "submit", value = "Add") }}
+            </p>
+        </form>
+    </div>
+    <!-- <div>
+        <label class="label1">
+            <input type="file">
+            Select Image
+        </label>
+    </div> -->
+{% endblock %}

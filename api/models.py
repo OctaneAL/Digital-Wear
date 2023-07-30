@@ -62,23 +62,23 @@ class FavouriteProducts(db.Model):
 class Product(db.Model):
     __tablename__ = "Product"
     id = db.Column(db.Integer, primary_key=True, nullable=False)
-    name = db.Column(db.String(100), nullable=False)
+    title = db.Column(db.String(50), nullable=False)
     logo = db.Column(db.String)  
     promo_images = db.Column(db.ARRAY(db.String))  
     web_site = db.Column(db.String)  
     description = db.Column(db.String(300), nullable=False)
-    product_type_id = db.Column(db.Integer, db.ForeignKey('ProductType.id'), nullable=False)
+    product_type_id = db.Column(db.Integer, db.ForeignKey('ProductType.id'), nullable=True) # nullable = False
     client_id = db.Column(db.Integer, db.ForeignKey('Client.id'), nullable=False)
 
     product_type = db.relationship('ProductType', back_populates='products')
     favourite_products = db.relationship('FavouriteProducts', back_populates='product')
     client = db.relationship('Client', back_populates='product')
 
-    def __init__(self, name, description, product_type_id, cliend_id):
-        self.name = name
+    def __init__(self, title, description, client_id, web_site):
+        self.title = title
         self.description = description
-        self.product_type_id = product_type_id
-        self.cliend_id = cliend_id
+        self.web_site = web_site
+        self.client_id = client_id
 
 class ProductType(db.Model):
     __tablename__ = "ProductType"

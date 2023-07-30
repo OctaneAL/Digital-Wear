@@ -1,9 +1,10 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, validators, PasswordField, SelectField
+from wtforms import StringField, SubmitField, validators, PasswordField, SelectField, URLField
 import phonenumbers
 from api.models import UserType, Client
 from api import app
 from flask import flash
+from flask_login import current_user
 
 class UserRegister(FlaskForm):
     email = StringField(
@@ -112,3 +113,40 @@ class UserLogin(FlaskForm):
     
     def is_anonymous(self):
         return False
+    
+class CreatePost(FlaskForm):
+    title = StringField(
+        'Title',
+        validators=[
+            validators.DataRequired(),
+            validators.Length(min=1, max=50, message = 'Title must be at least 1 character long and no more than 30.'),
+        ],
+    )
+
+    with app.app_context():
+        types = [(user.id, user.name) for user in UserType.query.all()]
+        
+    type = SelectField(
+        'Select your profession',
+        choices = types,
+        validators=[
+            validators.DataRequired(),
+        ],
+    )
+
+    website = URLField(
+        'Website'
+    )
+
+    description = StringField(
+        'Description',
+        validators=[
+            validators.DataRequired(),
+            validators.Length(max=600, message = 'Description must be no more than 600 characters.'),
+        ],
+    )
+
+    submit = SubmitField('submit')
+
+    def is_authenticated(self):
+        return current_user.is_authenticated
