@@ -9,51 +9,51 @@
     />
     <meta charset="UTF-8" />
     <title>HTML5 Login Form with validation Example</title>
-    <link type="text/css" href="{{ url_for('static', filename = 'css/newall.css') }}" rel = "stylesheet"/>
+    <link type="text/css" href="{{ url_for('static', filename = 'css/morenew.css') }}" rel = "stylesheet"/>
   </head>
   <body> -->
     
     <!-- partial:index.partial.html -->
 {% extends "base.html" %}
     {% block content %}
-    <div id="singup-form-wrap">
-      <form id="singup-form" method="post" action="">
+    <div id="singup-form-wrap3">
+      <form id="singup-form3" method="post" action="">
         <p>
           {{ form.csrf_token }}
-          {{ form.email(id="email", type="email", placeholder="Email") }}
+          {{ form.email(id="email3", type="email", placeholder="Email") }}
            <i class="validation"><span></span><span></span></i>
         </p>
         <p>
           {{ form.csrf_token }}
-          {{ form.first_name(id="First", type="text", placeholder="First name") }}
+          {{ form.first_name(id="First3", type="text", placeholder="First name") }}
            <i class="validation"><span></span><span></span></i>
         </p>
         <p>
           {{ form.csrf_token }}
-          {{ form.last_name(id="Last", type="text", placeholder="Last name") }}
+          {{ form.last_name(id="Last3", type="text", placeholder="Last name") }}
            <i class="validation"><span></span><span></span></i>
         </p>
         <p>
           {{ form.csrf_token }}
-          {{ form.phone(id="Phone", placeholder="Phone", type="number") }}
+          {{ form.phone(id="Phone3", placeholder="Phone", type="number") }}
            <i class="validation"><span></span><span></span></i>
         </p>
         {{ form.csrf_token }}
-        {{ form.type(id="Type", placeholder="User Type") }}
+        {{ form.type(id="Type3", placeholder="User Type") }}
         <i class="validation"><span></span><span></span></i>
         <p>
           {{ form.csrf_token }}
-          {{ form.password(id="password", placeholder="Password", type="password") }}
-        <i class="validation"><span></span><span></span></i>
-        </p>
-        <p>
-          {{ form.csrf_token }}
-          {{ form.password2(id="password", placeholder="Repeat password", type="password") }}
+          {{ form.password(id="password3", placeholder="Password", type="password") }}
         <i class="validation"><span></span><span></span></i>
         </p>
         <p>
           {{ form.csrf_token }}
-          {{ form.submit(id = "login", value = "Register") }}
+          {{ form.password2(id="password3", placeholder="Repeat password", type="password") }}
+        <i class="validation"><span></span><span></span></i>
+        </p>
+        <p>
+          {{ form.csrf_token }}
+          {{ form.submit(id = "login3", value = "Register") }}
         </p>
       </form>
       {% for cat, msg in get_flashed_messages(True) %}
