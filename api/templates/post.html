@@ -1,6 +1,34 @@
-{% extends "base.html" %}
+<!-- {% extends "base.html" %}
 {% block content %}
     <h1>{{ context.title }}</h1>
     <p>{{ context.web_site }}</p>
     <p>{{ context.description }}</p>
-{% endblock %}
+{% endblock %} -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/api/static/css/newall.css">
+    <title>Add Post</title>
+</head>
+<body class="bodyp">
+    <div>
+        <form>
+            <input class ="his" type="button" value="" onclick="history.go(-1)">
+            <p class="back1"></p>
+        </form>
+    </div>
+    <div class="div-11">
+        <textarea class="name1" type="text" placeholder="Title" cols="30" rows="2"></textarea>
+        <input type="text" placeholder="url" class="pole1">
+        <textarea class="description1" type="text" placeholder="Description" cols="30" rows="8"></textarea>
+    </div>
+    <div>
+        <label class="label1">
+            <img class="img" src="/api/test image/kapi.jpg" alt="">     
+        </label>
+    </div>
+</body>
+</html>

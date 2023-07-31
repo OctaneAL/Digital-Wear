@@ -603,3 +603,109 @@
 /*Log In*/
 /*Log In*/
 /*Log In*/
+
+
+
+
+
+
+
+/*Post*/
+/*Post*/
+/*Post*/
+/*Post*/
+/*Post*/
+/*Post*/
+
+
+
+
+
+.bodyp ::-webkit-input-placeholder { /* WebKit browsers */
+  color:#7BA79A;
+}
+
+.bodyp .description1 {
+  resize: none;
+  font-size: 36px;
+  position: absolute;
+  left: 56.5%;
+  bottom: 30%;
+  /* margin-left: 55%;
+  margin-top: 10%; */
+}
+.bodyp .name1 {
+  resize: none;
+  font-size: 36px;
+  position: absolute;
+  left: 56.5%;
+  bottom: 76%;
+  /* margin-left: 55%;
+  margin-top: 10%; */
+}
+
+
+.bodyp .pole1 {
+  resize: none;
+  font-size: 36px;
+  width: 32.05%;
+  color: #7BA79A;
+  position: absolute;
+  left: 56.5%;
+  bottom: 69%;
+  /* margin-left: 55%;
+  margin-top: 10%; */
+}
+
+/* input[type=file] {
+  visibility: hidden;
+}  */
+
+
+.bodyp .img{
+  position: absolute;
+  top: 22%;
+  left: 22%;
+  width: 30%;
+}
+
+.bodyp .label1 > input[type=file] {
+  display: none;
+  
+}
+
+.bodyp .back1{
+  background:#00583F; 
+  width: 3%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  position: absolute;
+  left:2% ;
+  top:1%;
+  border-radius: 35px;
+}
+
+.bodyp .his {
+  border: solid #F5F5F5;
+  border-width: 0 3px 3px 0;
+  position: absolute;
+  background: none;
+  left:3% ;
+  top: 3.5%;
+  z-index: 3;
+  width: 1%;
+  height: 2%;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(130deg);
+}
+
+
+
+
+
+/*Post*/
+/*Post*/
+/*Post*/
+/*Post*/
+/*Post*/
