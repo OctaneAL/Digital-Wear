@@ -7,180 +7,189 @@
     <title>Document</title>
 </head>
 <body>
-    <div style = "width:100%;padding-top: 3%; display: flex;">
-        <div class="profile-image2">
-            {% if current_user.photo != None %}
-                <img class="profile-img2" style="padding-left: 30%;" src="data:image/jpeg;base64,{{ image }}" alt="Зображення">
-            {% else %}
-                <img class="profile-img2" style="padding-left: 30%;" src="{{ url_for('static', filename='Unknown.png') }}" alt="Зображення">
-            {% endif %}
-        </div>
-        <div class="info2">
-            <p class = "username2">{{ context.first_name }} {{ context.last_name }}</p>
-            <p class = "bio2">Bio:</p>
-            <p class = "bio2">{{context.description}}</p>
-            <p class = "username2">Email: {{context.email}}</p>
-            <p class = "username2">Phone Number: {{context.phone}}</p>
-            {% if context.website != None %}
-            <p class = "username2">Website: {{context.website}}</p>
-            {% else %}
-            <p class = "username2">Website: -</p>
-            {% endif %}
-            <form method="post" action="{{ url_for('update') }}">
-                <button class = "edit2" type="submit">Edit</button>
-            </form>
-        </div>
-    </div>
-    <div class="container2">
-
-		<div class="container2">
-
-            <div class="gallery2">
-    
-                <div class="gallery-item2" tabindex="0">
-    
-                    <img src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop" class="gallery-image2" alt="">
-    
-                    <div class="gallery-item-info2">
-    
-                        <ul>
-                            <li class="gallery-item-likes2"><span class="visually-hidden2">Likes:</span><i class="fas2 fa-heart2" aria-hidden="true"></i> </li>
-                            <li class="gallery-item-comments2"><span class="visually-hidden2">Comments:</span><i class="fas2 fa-comment2" aria-hidden="true"></i> </li>
-                        </ul>
-    
-                    </div>
-    
+    <header style="width: 100%;">
+        <div class="container2" style = "width:100% !important;padding-top: 3%; display: flex;height: auto;">
+            <div style="width: 100%;" class="profile2">
+                <div class="profile-image2">
+                    {% if current_user.photo != None %}
+                        <img class="profile-img2" style="padding-left: 30%;" src="data:image/jpeg;base64,{{ image }}" alt="Зображення">
+                    {% else %}
+                        <img class="profile-img2" style="padding-left: 30%;" src="{{ url_for('static', filename='Unknown.png') }}" alt="Зображення">
+                    {% endif %}
                 </div>
-                <div class="gallery-item2" tabindex="0">
-    
-                    <img src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop" class="gallery-image2" alt="">
-    
-                    <div class="gallery-item-info2">
-    
-                        <ul>
-                            <li class="gallery-item-likes2"><span class="visually-hidden2">Likes:</span><i class="fas2 fa-heart2" aria-hidden="true"></i> </li>
-                            <li class="gallery-item-comments2"><span class="visually-hidden2">Comments:</span><i class="fas2 fa-comment2" aria-hidden="true"></i> </li>
-                        </ul>
-    
-                    </div>
-    
+                <div class="profile-bio2">
+                    <p class = "username2">{{ context.first_name }} {{ context.last_name }}</p>
+                    <p class = "bio2">Bio:</p>
+                    <p class = "bio2">{{context.description}}</p>
+                    <p class = "username2">Email: {{context.email}}</p>
+                    <p class = "username2">Phone Number: {{context.phone}}</p>
+                    {% if context.website != None %}
+                    <p class = "username2">Website: {{context.website}}</p>
+                    {% else %}
+                    <p class = "username2">Website: -</p>
+                    {% endif %}
+                    <form method="post" action="{{ url_for('update') }}">
+                        <button class = "edit2" type="submit">Edit</button>
+                    </form>
                 </div>
-                <div class="gallery-item2" tabindex="0">
-    
-                    <img src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop" class="gallery-image2" alt="">
-    
-                    <div class="gallery-item-info2">
-    
-                        <ul>
-                            <li class="gallery-item-likes2"><span class="visually-hidden2">Likes:</span><i class="fas2 fa-heart2" aria-hidden="true"></i> </li>
-                            <li class="gallery-item-comments2"><span class="visually-hidden2">Comments:</span><i class="fas2 fa-comment2" aria-hidden="true"></i> </li>
-                        </ul>
-    
-                    </div>
-    
-                </div>
-                <div class="gallery-item2" tabindex="0">
-    
-                    <img src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop" class="gallery-image2" alt="">
-    
-                    <div class="gallery-item-info2">
-    
-                        <ul>
-                            <li class="gallery-item-likes2"><span class="visually-hidden2">Likes:</span><i class="fas2 fa-heart2" aria-hidden="true"></i> </li>
-                            <li class="gallery-item-comments2"><span class="visually-hidden2">Comments:</span><i class="fas2 fa-comment2" aria-hidden="true"></i> </li>
-                        </ul>
-    
-                    </div>
-    
-                </div>
-                <div class="gallery-item2" tabindex="0">
-    
-                    <img src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop" class="gallery-image2" alt="">
-    
-                    <div class="gallery-item-info2">
-    
-                        <ul>
-                            <li class="gallery-item-likes2"><span class="visually-hidden2">Likes:</span><i class="fas2 fa-heart2" aria-hidden="true"></i> </li>
-                            <li class="gallery-item-comments2"><span class="visually-hidden2">Comments:</span><i class="fas2 fa-comment2" aria-hidden="true"></i> </li>
-                        </ul>
-    
-                    </div>
-    
-                </div>
-                <div class="gallery-item2" tabindex="0">
-    
-                    <img src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop" class="gallery-image2" alt="">
-    
-                    <div class="gallery-item-info2">
-    
-                        <ul>
-                            <li class="gallery-item-likes2"><span class="visually-hidden2">Likes:</span><i class="fas2 fa-heart2" aria-hidden="true"></i> </li>
-                            <li class="gallery-item-comments2"><span class="visually-hidden2">Comments:</span><i class="fas2 fa-comment2" aria-hidden="true"></i> </li>
-                        </ul>
-    
-                    </div>
-    
-                </div>
-                <div class="gallery-item2" tabindex="0">
-    
-                    <img src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop" class="gallery-image2" alt="">
-    
-                    <div class="gallery-item-info2">
-    
-                        <ul>
-                            <li class="gallery-item-likes2"><span class="visually-hidden2">Likes:</span><i class="fas2 fa-heart2" aria-hidden="true"></i> </li>
-                            <li class="gallery-item-comments2"><span class="visually-hidden2">Comments:</span><i class="fas2 fa-comment2" aria-hidden="true"></i> </li>
-                        </ul>
-    
-                    </div>
-    
-                </div>
-                <div class="gallery-item2" tabindex="0">
-    
-                    <img src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop" class="gallery-image2" alt="">
-    
-                    <div class="gallery-item-info2">
-    
-                        <ul>
-                            <li class="gallery-item-likes2"><span class="visually-hidden2">Likes:</span><i class="fas2 fa-heart2" aria-hidden="true"></i> </li>
-                            <li class="gallery-item-comments2"><span class="visually-hidden2">Comments:</span><i class="fas2 fa-comment2" aria-hidden="true"></i> </li>
-                        </ul>
-    
-                    </div>
-    
-                </div>
-                <div class="gallery-item2" tabindex="0">
-    
-                    <img src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop" class="gallery-image2" alt="">
-    
-                    <div class="gallery-item-info2">
-    
-                        <ul>
-                            <li class="gallery-item-likes2"><span class="visually-hidden2">Likes:</span><i class="fas2 fa-heart2" aria-hidden="true"></i> </li>
-                            <li class="gallery-item-comments2"><span class="visually-hidden2">Comments:</span><i class="fas2 fa-comment2" aria-hidden="true"></i> </li>
-                        </ul>
-    
-                    </div>
-    
-                </div>
-                <div class="gallery-item2" tabindex="0">
-    
-                    <img src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop" class="gallery-image2" alt="">
-    
-                    <div class="gallery-item-info2">
-    
-                        <ul>
-                            <li class="gallery-item-likes2"><span class="visually-hidden2">Likes:</span><i class="fas2 fa-heart2" aria-hidden="true"></i> </li>
-                            <li class="gallery-item-comments2"><span class="visually-hidden2">Comments:</span><i class="fas2 fa-comment2" aria-hidden="true"></i> </li>
-                        </ul>
-    
-                    </div>
-    
-                </div>
-
-                
-    
             </div>
-            <div class="loader"></div>
+        </div>
+    </header>
+    <main>
+        <div class="container2">
+
+            <div class="container2">
+
+                <div class="gallery2">
+        
+                    <div class="gallery-item2" tabindex="0">
+        
+                        <img src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop" class="gallery-image2" alt="">
+        
+                        <div class="gallery-item-info2">
+        
+                            <ul>
+                                <li class="gallery-item-likes2"><span class="visually-hidden2">Likes:</span><i class="fas2 fa-heart2" aria-hidden="true"></i> </li>
+                                <li class="gallery-item-comments2"><span class="visually-hidden2">Comments:</span><i class="fas2 fa-comment2" aria-hidden="true"></i> </li>
+                            </ul>
+        
+                        </div>
+        
+                    </div>
+                    <div class="gallery-item2" tabindex="0">
+        
+                        <img src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop" class="gallery-image2" alt="">
+        
+                        <div class="gallery-item-info2">
+        
+                            <ul>
+                                <li class="gallery-item-likes2"><span class="visually-hidden2">Likes:</span><i class="fas2 fa-heart2" aria-hidden="true"></i> </li>
+                                <li class="gallery-item-comments2"><span class="visually-hidden2">Comments:</span><i class="fas2 fa-comment2" aria-hidden="true"></i> </li>
+                            </ul>
+        
+                        </div>
+        
+                    </div>
+                    <div class="gallery-item2" tabindex="0">
+        
+                        <img src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop" class="gallery-image2" alt="">
+        
+                        <div class="gallery-item-info2">
+        
+                            <ul>
+                                <li class="gallery-item-likes2"><span class="visually-hidden2">Likes:</span><i class="fas2 fa-heart2" aria-hidden="true"></i> </li>
+                                <li class="gallery-item-comments2"><span class="visually-hidden2">Comments:</span><i class="fas2 fa-comment2" aria-hidden="true"></i> </li>
+                            </ul>
+        
+                        </div>
+        
+                    </div>
+                    <div class="gallery-item2" tabindex="0">
+        
+                        <img src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop" class="gallery-image2" alt="">
+        
+                        <div class="gallery-item-info2">
+        
+                            <ul>
+                                <li class="gallery-item-likes2"><span class="visually-hidden2">Likes:</span><i class="fas2 fa-heart2" aria-hidden="true"></i> </li>
+                                <li class="gallery-item-comments2"><span class="visually-hidden2">Comments:</span><i class="fas2 fa-comment2" aria-hidden="true"></i> </li>
+                            </ul>
+        
+                        </div>
+        
+                    </div>
+                    <div class="gallery-item2" tabindex="0">
+        
+                        <img src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop" class="gallery-image2" alt="">
+        
+                        <div class="gallery-item-info2">
+        
+                            <ul>
+                                <li class="gallery-item-likes2"><span class="visually-hidden2">Likes:</span><i class="fas2 fa-heart2" aria-hidden="true"></i> </li>
+                                <li class="gallery-item-comments2"><span class="visually-hidden2">Comments:</span><i class="fas2 fa-comment2" aria-hidden="true"></i> </li>
+                            </ul>
+        
+                        </div>
+        
+                    </div>
+                    <div class="gallery-item2" tabindex="0">
+        
+                        <img src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop" class="gallery-image2" alt="">
+        
+                        <div class="gallery-item-info2">
+        
+                            <ul>
+                                <li class="gallery-item-likes2"><span class="visually-hidden2">Likes:</span><i class="fas2 fa-heart2" aria-hidden="true"></i> </li>
+                                <li class="gallery-item-comments2"><span class="visually-hidden2">Comments:</span><i class="fas2 fa-comment2" aria-hidden="true"></i> </li>
+                            </ul>
+        
+                        </div>
+        
+                    </div>
+                    <div class="gallery-item2" tabindex="0">
+        
+                        <img src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop" class="gallery-image2" alt="">
+        
+                        <div class="gallery-item-info2">
+        
+                            <ul>
+                                <li class="gallery-item-likes2"><span class="visually-hidden2">Likes:</span><i class="fas2 fa-heart2" aria-hidden="true"></i> </li>
+                                <li class="gallery-item-comments2"><span class="visually-hidden2">Comments:</span><i class="fas2 fa-comment2" aria-hidden="true"></i> </li>
+                            </ul>
+        
+                        </div>
+        
+                    </div>
+                    <div class="gallery-item2" tabindex="0">
+        
+                        <img src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop" class="gallery-image2" alt="">
+        
+                        <div class="gallery-item-info2">
+        
+                            <ul>
+                                <li class="gallery-item-likes2"><span class="visually-hidden2">Likes:</span><i class="fas2 fa-heart2" aria-hidden="true"></i> </li>
+                                <li class="gallery-item-comments2"><span class="visually-hidden2">Comments:</span><i class="fas2 fa-comment2" aria-hidden="true"></i> </li>
+                            </ul>
+        
+                        </div>
+        
+                    </div>
+                    <div class="gallery-item2" tabindex="0">
+        
+                        <img src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop" class="gallery-image2" alt="">
+        
+                        <div class="gallery-item-info2">
+        
+                            <ul>
+                                <li class="gallery-item-likes2"><span class="visually-hidden2">Likes:</span><i class="fas2 fa-heart2" aria-hidden="true"></i> </li>
+                                <li class="gallery-item-comments2"><span class="visually-hidden2">Comments:</span><i class="fas2 fa-comment2" aria-hidden="true"></i> </li>
+                            </ul>
+        
+                        </div>
+        
+                    </div>
+                    <div class="gallery-item2" tabindex="0">
+        
+                        <img src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop" class="gallery-image2" alt="">
+        
+                        <div class="gallery-item-info2">
+        
+                            <ul>
+                                <li class="gallery-item-likes2"><span class="visually-hidden2">Likes:</span><i class="fas2 fa-heart2" aria-hidden="true"></i> </li>
+                                <li class="gallery-item-comments2"><span class="visually-hidden2">Comments:</span><i class="fas2 fa-comment2" aria-hidden="true"></i> </li>
+                            </ul>
+        
+                        </div>
+        
+                    </div>
+
+                    
+        
+                </div>
+            </div>
+        </div>
+
+    <div class="loader"></div>
+</main>
 </body>
 </html>
