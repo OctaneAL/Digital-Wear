@@ -290,8 +290,9 @@ img {
 .fa-comment2 {
     transform: rotateY(180deg);
 }
-
-
+.info2{
+    object-fit:cover;
+}
 
 .gallery-image2 {
     width: 100%;
@@ -422,26 +423,7 @@ img {
 
 
 
-a,
-a:link,
-a:visited,
-a:active {
-  color: #3ca9e2;
-  -webkit-transition: all 0.2s ease;
-  transition: all 0.2s ease;
-}
-a:focus,
-a:hover,
-a:link:focus,
-a:link:hover,
-a:visited:focus,
-a:visited:hover,
-a:active:focus,
-a:active:hover {
-  color: #329dd5;
-  -webkit-transition: all 0.2s ease;
-  transition: all 0.2s ease;
-}
+
 
 #singup-form-wrap3 {
   width: 559px;
@@ -458,7 +440,7 @@ a:active:hover {
   color: #7ba79a;
 }
 
-input {
+#registerinput {
   border-radius: 25px;
   display: block;
   box-sizing: border-box;
@@ -515,7 +497,7 @@ input[type="email"]:valid ~ .validation span:last-child {
   top: 0px;
 }
 
-input[type="submit"] {
+#login3 {
   color: #00583f;
   background: #7ba79a;
   height: 90px;
