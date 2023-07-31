@@ -236,6 +236,30 @@ img {
 
 /* Profile Section */
 
+@media screen and (max-width: 40rem) {
+    
+
+    .profile-bio2 {
+        float: none;
+        width: auto;
+    }
+
+
+
+
+
+
+    .profile-bio2 {
+        font-size: 1.4rem;
+        margin-top: 1.5rem;
+    }
+
+    .profile-bio2{
+        flex-basis: 100%;
+    }
+
+
+}
 
 
 .gallery2 {
@@ -300,6 +324,10 @@ img {
     object-fit: cover;
 }
 
+.profile-bio2 {
+    float: left;
+    width: calc(66.666% - 2rem);
+}
 /* Loader */
 
 .loader2 {
@@ -352,7 +380,7 @@ img {
         width: 125%;
     }
     .edit2{
-        width: 16.25%;
+        width: 30%;
         height: 25%;
         padding: 10px 19px;
         gap: -19px;
@@ -360,7 +388,6 @@ img {
         font-size: 4vw;
     }
     .icon2{
-        padding-left: 6.6%;
         width:18.75%;
         height:18.75%;
     }
@@ -392,7 +419,7 @@ img {
         width: 100%;
     }
     .edit2{
-        width: 10%;
+        width: 20%;
         height: 20.4%;
         padding: 10px 19px;
         gap: -19px;
@@ -400,7 +427,6 @@ img {
         font-size: 1.875vw;
     }
     .icon2{
-        padding-left: 7.1%;
         width:13%;
         height:13%;
     }
