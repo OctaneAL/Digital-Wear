@@ -134,6 +134,14 @@ class CreatePost(FlaskForm):
         ],
     )
 
+    description = TextAreaField(
+        'Description', 
+        validators=[
+            validators.DataRequired(),
+            validators.Length(max=300, message="No more than 300 characters")
+        ],
+    )
+
     website = URLField(
         'Website'
     )
