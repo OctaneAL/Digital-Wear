@@ -7,7 +7,7 @@
         </form>
     </div> -->
     <div class="div-11">
-        <form action="" method="post" id="addpost-form", enctype="multipart/form-data">
+        <form action="" method="post" id="addpost-form">
             <p>
                 {{ form.csrf_token }}
                 {{ form.title(id="title", type="text", placeholder="Title (Required)", cols="30", rows="2") }}
@@ -34,12 +34,10 @@
             </p>
             <p>
                 {{ form.csrf_token }}
-                {{ form.photo() }}
-                 <i class="validation"><span></span><span></span></i>
+                {{ form.submit(id = "submit", value = "Change") }}
             </p>
             <p>
-                {{ form.csrf_token }}
-                {{ form.submit(id = "submit", value = "Add") }}
+                <a href = "{{url_for('delete_post', post_id = post_id)}}" class = "btn btn-outline-danger btn-lg">Delete</a>
             </p>
         </form>
     </div>

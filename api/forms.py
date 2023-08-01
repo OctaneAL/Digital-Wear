@@ -1,10 +1,12 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, validators, PasswordField, SelectField, URLField, TextAreaField, FileField
+from flask_wtf.file import FileAllowed, FileRequired
 import phonenumbers
 from api.models import UserType, Client, ProductType
 from api import app
 from flask import flash
 from flask_login import current_user
+
 
 class UserRegister(FlaskForm):
     email = StringField(
@@ -124,7 +126,7 @@ class CreatePost(FlaskForm):
     )
 
     with app.app_context():
-        types = [(user.id, user.name) for user in UserType.query.all()]
+        types = [(type.id, type.name) for type in ProductType.query.all()]
         
     type = SelectField(
         'Select your profession',
@@ -146,11 +148,18 @@ class CreatePost(FlaskForm):
         'Website'
     )
 
-    submit = SubmitField('submit')
+    photo = FileField(
+        "Main Photo",
+        validators=[
+            FileRequired(),
+            FileAllowed(['png', 'jpeg']),
+        ],
+    )
+
+    submit = SubmitField('Create')
 
     def is_authenticated(self):
         return current_user.is_authenticated
-
 
 
 class UpdateUser(FlaskForm):
@@ -205,14 +214,18 @@ class UpdateUser(FlaskForm):
     )
 
     photo = FileField(
-        "Logo photo",
+        " Photo",
+        validators=[
+            FileAllowed(['png', 'jpeg']),
+        ],
     )
+
 
     website = StringField(
         'Website',
     )
 
-    submit = SubmitField('submit')
+    submit = SubmitField('Update')
 
     def validate_email(self, email):
         exists = Client.query.filter_by(email=email.data).first() is not None

@@ -13,10 +13,15 @@
         <p class="name1">{{ context.title }}<p>
         <p class="pole1">{{ context.web_site }}</p>
         <p class="description1" >{{ context.description }}</p> 
+        {% if post.client_id == current_user.id %}
+        <p>
+        <a href = "{{url_for('update_post', post_id = post.id)}}" class = "btn btn-outline-info btn-xl">Edit</a>
+        </p>
+        {% endif %}
     </div>
     <div>
         <label class="label1">
-            <img class="img" src="/api/test image/kapi.jpg" alt="">     
+            <img class="img" src="{{filename}}" alt="No Imag">   
         </label>
     </div>
 </div> 
