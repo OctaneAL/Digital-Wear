@@ -1,26 +1,27 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="bodyp">
-    <div>
-        <form>
-            <input class ="his" type="button" value="" onclick="history.go(-1)">
-            <p class="back1"></p>
-        </form>
-    </div>
-    <div class="div-11">
-        <p class="name1">{{ context.title }}<p>
-        <p class="pole1">{{ context.web_site }}</p>
-        <p class="description1" >{{ context.description }}</p> 
-        {% if post.client_id == current_user.id %}
-        <p>
-        <a href = "{{url_for('update_post', post_id = post.id)}}" class = "btn btn-outline-info btn-xl">Edit</a>
-        </p>
-        {% endif %}
-    </div>
-    <div>
-        <label class="label1">
-            <img class="img" src="{{filename}}" alt="No Image">   
-        </label>
+    <div class="projcard-container">
+    
+        <div class="projcard projcard-blue">
+          <div class="projcard-innerbox">
+
+            {% if post.client_id == current_user.id %}
+            <p>
+            <a href = "{{url_for('update_post', post_id = post.id)}}" class = "btn btn-outline-info btn-xl">Edit</a>
+            </p>
+            {% endif %}
+            <img class="projcard-img" src="{{filename}}" />
+            <div class="projcard-textbox">
+              <div class="projcard-title">{{ context.title }}</div>
+              <div class="projcard-subtitle">{{ context.web_site }}</div>
+              <div class="projcard-bar"></div>
+              <div class="projcard-description">{{ context.description }}</div>
+              <div class="projcard-tagbox">
+              </div>
+            </div>
+          </div>
+        </div>
     </div>
 </div> 
 {% endblock %}
