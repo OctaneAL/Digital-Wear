@@ -1,12 +1,14 @@
 from api import db, app, login_manager
 from api.forms import UserLogin, UserRegister, CreatePost, UpdateUser
-from api.models import Client, Product
+from api.models import Client, Product, ProductType
 from flask_bcrypt import Bcrypt
 from flask_login import login_user, login_required, logout_user, current_user
-from flask import redirect, render_template, url_for, flash, request
+from flask import redirect, render_template, url_for, flash, request, send_from_directory
 from PIL import Image
 import io
 import base64
+import os
+from .config import UPLOAD_FOLDER
 
 bcrypt = Bcrypt(app)
 login_manager.login_view = 'login'
@@ -35,8 +37,7 @@ def login():
             if not Bcrypt.check_password_hash(bcrypt, user.password, form.password.data):
                 flash("Wrong password", category="error")
             else:
-                rm = True if request.form.get("remember") else False
-                login_user(user, remember=rm)
+                login_user(user, remember=True)
                 return redirect(url_for('home')) 
     return render_template('login.html', form=form) 
 
@@ -68,6 +69,10 @@ def log_out():
     flash('')
     return redirect(url_for("login"))
 
+@app.route("/uploads/<filename>")
+def get_file(filename):
+    return send_from_directory(app.config['UPLOADED_PHOTOS_DEST'], filename)
+ 
 @app.route('/add_post', methods = ['GET', 'POST'])
 @login_required
 def add_post():
@@ -82,6 +87,12 @@ def add_post():
         )
         db.session.add(new_product)
         db.session.commit()
+
+        file = form.photo.data
+        filename = str(new_product.id) + ".png"
+        file_path = os.path.join(UPLOAD_FOLDER, filename)
+        file.save(file_path)
+
         return redirect(url_for('profile')) 
     return render_template("addpost.html", form=form)
 
@@ -89,13 +100,56 @@ def add_post():
 def post(id):
     post = Product.query.filter_by(id=id).first()
     if post is None:
-        return 'Nema takogo id :('
+        return redirect(url_for("home"))
     context = {
         'title': post.title,
         'web_site': post.web_site,
         'description': post.description,
     }
-    return render_template('post.html', context=context)
+    file_path = url_for('static', filename = "uploads/" + str(id) + ".png")
+    print(file_path)
+    return render_template('post.html', context=context, post = post, filename = file_path)
+
+
+
+@app.route("/post/<int:post_id>/update", methods=['GET', 'POST'])
+@login_required
+def update_post(post_id):
+    post = Product.query.get(post_id)
+
+    if post.client_id != current_user.id:
+        return redirect(url_for("home"))
+    form = CreatePost(obj=post)
+
+    if form.validate_on_submit():
+        post.title = form.title.data
+        post.description = form.description.data
+        post.website = form.website.data
+        post.product_type_id = form.type.data
+
+        db.session.merge(post)
+        db.session.commit()
+        return redirect(url_for('post', id=post.id))
+     
+    return render_template('update_post.html', title='Update Post', form=form, legend='Update Post', post_id = post_id)
+
+@app.route("/post/<int:post_id>/delete", methods=['POST', 'GET'])
+@login_required
+def delete_post(post_id):
+    post = Product.query.get(post_id)
+    if post.client_id != current_user.id or post == None:
+        return redirect(url_for("home"))
+    else:
+        basedir = os.path.abspath(os.path.dirname(__file__))
+        file_path = os.path.join(basedir, 'static/uploads/' + str(post_id) + '.png')
+        print(file_path)
+        if os.path.exists(file_path):
+            os.remove(file_path)
+        db.session.delete(post)
+        db.session.commit()
+        return redirect(url_for('profile'))
+
+
 
 @app.route('/profile')
 @login_required
