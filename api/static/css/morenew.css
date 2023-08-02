@@ -648,46 +648,50 @@ input::-webkit-input-placeholder {
   color:#7BA79A;
 }
 
-.bodyp .description1 {
-  resize: none;
-  font-size: 36px;
-  position: absolute;
-  left: 56.5%;
-  bottom: 30%;
-  /* margin-left: 55%;
-  margin-top: 10%; */
-}
 .bodyp .name1 {
   resize: none;
   font-size: 36px;
   position: absolute;
   left: 56.5%;
-  bottom: 76%;
-  /* margin-left: 55%;
-  margin-top: 10%; */
+  border: solid #00583f;
+  margin-top: 13%;
+  padding-top: 0.5%;
+  padding-left: 0.5%;
+  padding-bottom: 0.5%;
+  padding-right: 0.5%;
 }
-
 
 .bodyp .pole1 {
   resize: none;
   font-size: 36px;
   width: 32.05%;
-  color: #7BA79A;
+  margin-top: 19%;
+  /* color: #7BA79A; */
   position: absolute;
   left: 56.5%;
-  bottom: 69%;
-  /* margin-left: 55%;
-  margin-top: 10%; */
+  border: solid #00583f;
+  padding-top: 0.5%;
+  padding-left: 0.5%;
+  padding-bottom: 0.5%;
+  padding-right: 0.5%;
 }
 
-/* input[type=file] {
-  visibility: hidden;
-}  */
-
+.bodyp .description1 {
+  resize: none;
+  font-size: 36px;
+  position: absolute;
+  margin-top: 7%;
+  left: 56.5%;
+  border: solid #00583f;
+  padding-top: 0.5%;
+  padding-left: 0.5%;
+  padding-bottom: 0.5%;
+  padding-right: 0.5%;
+}
 
 .bodyp .img{
   position: absolute;
-  top: 22%;
+  top: 35%;
   left: 22%;
   width: 30%;
 }
@@ -704,17 +708,17 @@ input::-webkit-input-placeholder {
   padding-bottom: 1%;
   position: absolute;
   left:2% ;
-  top:12%;
+  top:9%;
   border-radius: 35px;
 }
 
 .bodyp .his {
   border: solid #F5F5F5;
-  border-width: 0 3px 3px 0;
+  border-width: 0 1px 1px 0;
   position: absolute;
   background: none;
   left:3% ;
-  top: 3.5%;
+  top: 10%;
   z-index: 3;
   width: 1%;
   height: 2%;
