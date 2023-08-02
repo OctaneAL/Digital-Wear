@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link type="text/css" href="{{ url_for('static', filename = 'css/morenew.css') }}" rel = "stylesheet"/>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block content %}
     <header style="width: 100%;">
         <div class="container2" style = "width:100% !important;padding-top: 3%; display: flex;height: auto;">
             <div style="width: 100%;" class="profile2">
@@ -36,7 +29,7 @@
         </div>
     </header>
     <main>
-        <div class="container2">
+        <!-- <div class="container2">
 
             <div class="container2">
 
@@ -187,9 +180,31 @@
         
                 </div>
             </div>
+        </div> -->
+        <!-- <p>капець</p> -->
+        <div class="container2">
+            <div class="gallery2">
+                {% for post in context.posts %}
+                    <a  href="{{url_for('post', id = post.id )}}">
+                        <div class="gallery-item2" tabindex="0">
+                            <img src="/static/uploads/{{ post.id }}.png" class="gallery-image2" alt="" href="{{url_for('post', id = post.id )}}">
+    
+                            <div class="gallery-item-info2">
+    
+                                <ul>
+                                    <li class="gallery-item-likes2"><span class="visually-hidden2">Likes:</span><i class="fas2 fa-heart2" aria-hidden="true"></i> </li>
+                                    <li class="gallery-item-comments2"><span class="visually-hidden2">Comments:</span><i class="fas2 fa-comment2" aria-hidden="true"></i> </li>
+                                </ul>
+    
+                            </div>
+                        
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+            <div class="loader"></div>
         </div>
 
-    <div class="loader"></div>
+    <!-- <div class="loader"></div> -->
 </main>
-</body>
-</html>
+{% endblock %}

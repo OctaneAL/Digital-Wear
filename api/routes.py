@@ -29,7 +29,6 @@ def login():
     form = UserLogin()
     if form.validate_on_submit():
         user = Client.query.filter_by(email = form.email.data).first()
-        print(form.email.data)
         flash('')
         if not user:
             flash("You have not been registered", category="error")
@@ -107,7 +106,6 @@ def post(id):
         'description': post.description,
     }
     file_path = url_for('static', filename = "uploads/" + str(id) + ".png")
-    print(file_path)
     return render_template('post.html', context=context, post = post, filename = file_path)
 
 
@@ -142,7 +140,6 @@ def delete_post(post_id):
     else:
         basedir = os.path.abspath(os.path.dirname(__file__))
         file_path = os.path.join(basedir, 'static/uploads/' + str(post_id) + '.png')
-        print(file_path)
         if os.path.exists(file_path):
             os.remove(file_path)
         db.session.delete(post)
@@ -157,7 +154,7 @@ def profile():
     image = Client.query.get(current_user.id).photo
     if image != None:
         image = base64.b64encode(image).decode('utf-8')
-
+    print(current_user.id)
     context = {
         'first_name': current_user.first_name,
         'last_name': current_user.last_name,
@@ -165,6 +162,7 @@ def profile():
         'phone': current_user.phone,
         'description': current_user.description,
         'website': current_user.portfolio_url,
+        'posts': Product.query.filter_by(client_id = current_user.id).all(),
     }
     return render_template("profile.html", context = context, image = image)
 
@@ -195,6 +193,6 @@ def update():
         db.session.merge(user)
         db.session.commit()
         user = Client.query.filter_by(id = current_user.id).first()
-        return redirect(url_for('profile')) 
+        return redirect(url_for('profile'))
     
     return render_template("update.html", form = form)

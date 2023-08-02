@@ -152,7 +152,7 @@ class CreatePost(FlaskForm):
         "Main Photo",
         validators=[
             FileRequired(),
-            FileAllowed(['png', 'jpeg']),
+            FileAllowed(['png', 'jpeg', 'jpg']),
         ],
     )
 
