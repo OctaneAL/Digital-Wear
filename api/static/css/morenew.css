@@ -942,9 +942,6 @@ input::-webkit-input-placeholder {
 /*Post*/
 
 
-<<<<<<< HEAD
-
-
 /*AddPost*/
 /*AddPost*/
 /*AddPost*/
@@ -1192,7 +1189,9 @@ input::-webkit-input-placeholder {
 /*AddPost*/
 /*AddPost*/
 /*AddPost*/
-=======
+
+
+
 /*MAIN PAGE*/
 #columns {
 	column-width: 320px;
@@ -1248,4 +1247,3 @@ div#columns:hover figure:not(:hover) {
   #columns { column-gap: 0px; }
   #columns figure { width: 100%; }
 }
->>>>>>> fb5f51ecb3d58974e77e4dc88d1dfb12c01c0e18
