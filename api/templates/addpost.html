@@ -1,52 +1,29 @@
 {% extends "base.html" %}
 {% block content %}
-    <!-- <div>
-        <form>
-            <input class ="his" type="button" value="" onclick="history.go(-1)">
-            <p class="back1"></p>
-        </form>
-    </div> -->
-    <div class="div-11">
-        <form action="" method="post" id="addpost-form", enctype="multipart/form-data">
-            <p>
-                {{ form.csrf_token }}
-                {{ form.title(id="title", type="text", placeholder="Title (Required)", cols="30", rows="2") }}
-                <!-- , class="name1" -->
-                <i class="validation"><span></span><span></span></i>
-            </p>
-            <p>
-                {{ form.csrf_token }}
-                {{ form.type(id="type", type="text", placeholder="User Type") }}
-                <!-- , class="select1" -->
-                <i class="validation"><span></span><span></span></i>
-            </p>
-            <p>
-                {{ form.csrf_token }}
-                {{ form.website(id="website", type="text", placeholder="Website (Optional)") }} 
-                <!-- , class="pole1" -->
-                <i class="validation"><span></span><span></span></i>
-            </p>
-            <p>
-                {{ form.csrf_token }}
-                {{ form.description(id="description", type="text", placeholder="Description (Required)", cols="30", rows="8") }}
-                <!-- , class="description1" -->
-                <i class="validation"><span></span><span></span></i>
-            </p>
-            <p>
-                {{ form.csrf_token }}
-                {{ form.photo() }}
-                 <i class="validation"><span></span><span></span></i>
-            </p>
-            <p>
-                {{ form.csrf_token }}
-                {{ form.submit(id = "submit", value = "Add") }}
-            </p>
-        </form>
+<div class="bodyp">
+    <form action="" method="post" id="addpost-form", enctype="multipart/form-data">
+    <div class="projcard-container">
+    
+        <div class="projcard projcard-blue">
+            <div class="projcard-innerbox">
+                <p> {{ form.csrf_token }}
+                    {{ form.photo() }}
+                    <i class="projcard-img"></i></p>
+                <div class="projcard-textbox">
+                    <div class="projcard-title"> {{ form.csrf_token }}
+                    {{ form.title(id="title", type="text", placeholder="Title (Required)", cols="30", rows="2") }}</div>
+                    <div class="projcard-subtitle">{{ form.csrf_token }}
+                    {{ form.website(id="website", type="text", placeholder="Website (Optional)") }} </div>
+                    <div class="projcard-bar"></div>
+                    <div class="projcard-description">{{ form.csrf_token }}
+                    {{ form.description(id="description", type="text", placeholder="Description (Required)", cols="30", rows="8") }}</div>
+                    <div class="projcard-tagbox"></div>
+                    <p> {{ form.csrf_token }}
+                    {{ form.submit(id = "submit", value = "Add") }} </p>
+                </div>
+            </div>
+        </div>
     </div>
-    <!-- <div>
-        <label class="label1">
-            <input type="file">
-            Select Image
-        </label>
-    </div> -->
+    </form>
+</div> 
 {% endblock %}

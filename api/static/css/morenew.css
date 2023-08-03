@@ -39,13 +39,13 @@
     color: #7ba79a;
   }
   
-  input {
+  /* input {
     border-radius: 25px;
     display: block;
     box-sizing: border-box;
     width: 100%;
     outline: none;
-  }
+  } */
   
   #email {
     color: #7ba79a;
@@ -648,7 +648,6 @@ body {
   margin: 50px 0;
 }
 
-/* Actual Code: */
 .projcard-container,
 .projcard-container * {
   box-sizing: border-box;
