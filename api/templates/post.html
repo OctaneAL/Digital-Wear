@@ -6,11 +6,6 @@
         <div class="projcard projcard-blue">
           <div class="projcard-innerbox">
 
-            {% if post.client_id == current_user.id %}
-            <p>
-            <a href = "{{url_for('update_post', post_id = post.id)}}" class = "btn btn-outline-info btn-xl">Edit</a>
-            </p>
-            {% endif %}
             <img class="projcard-img" src="{{filename}}" />
             <div class="projcard-textbox">
               <div class="projcard-title">{{ context.title }}</div>
@@ -19,6 +14,11 @@
               <div class="projcard-description">{{ context.description }}</div>
               <div class="projcard-tagbox">
               </div>
+              {% if post.client_id == current_user.id %}
+                <p>
+                <a href = "{{url_for('update_post', post_id = post.id)}}" class = "btn btn-outline-info btn-xl">Edit</a>
+                </p>
+                {% endif %}
             </div>
           </div>
         </div>

@@ -1,5 +1,5 @@
 from api import db, app, login_manager
-from api.forms import UserLogin, UserRegister, CreatePost, UpdateUser
+from api.forms import UserLogin, UserRegister, CreatePost, UpdateUser, UpdatePost
 from api.models import Client, Product, ProductType
 from flask_bcrypt import Bcrypt
 from flask_login import login_user, login_required, logout_user, current_user
@@ -117,18 +117,16 @@ def update_post(post_id):
 
     if post.client_id != current_user.id:
         return redirect(url_for("home"))
-    form = CreatePost(obj=post)
+    form = UpdatePost(obj=post)
 
     if form.validate_on_submit():
         post.title = form.title.data
         post.description = form.description.data
         post.website = form.website.data
         post.product_type_id = form.type.data
-
         db.session.merge(post)
         db.session.commit()
         return redirect(url_for('post', id=post.id))
-     
     return render_template('update_post.html', title='Update Post', form=form, legend='Update Post', post_id = post_id)
 
 @app.route("/post/<int:post_id>/delete", methods=['POST', 'GET'])

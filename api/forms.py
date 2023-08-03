@@ -161,6 +161,43 @@ class CreatePost(FlaskForm):
     def is_authenticated(self):
         return current_user.is_authenticated
 
+class UpdatePost(FlaskForm):
+    title = StringField(
+        'Title',
+        validators=[
+            validators.DataRequired(),
+            validators.Length(min=1, max=50, message = 'Title must be at least 1 character long and no more than 30.'),
+        ],
+    )
+
+    with app.app_context():
+        types = [(type.id, type.name) for type in ProductType.query.all()]
+        
+    type = SelectField(
+        'Select your profession',
+        choices = types,
+        validators=[
+            validators.DataRequired(),
+        ],
+    )
+
+    description = TextAreaField(
+        'Description', 
+        validators=[
+            validators.DataRequired(),
+            validators.Length(max=300, message="No more than 300 characters")
+        ],
+    )
+
+    website = URLField(
+        'Website'
+    )
+
+    submit = SubmitField('Create')
+
+    def is_authenticated(self):
+        return current_user.is_authenticated
+
 
 class UpdateUser(FlaskForm):
     email = StringField(
