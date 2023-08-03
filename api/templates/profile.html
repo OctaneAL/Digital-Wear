@@ -182,27 +182,12 @@
             </div>
         </div> -->
         <!-- <p>капець</p> -->
-        <div class="container2">
-            <div class="gallery2">
+        <div id="columns">
                 {% for post in context.posts %}
-                    <a  href="{{url_for('post', id = post.id )}}">
-                        <div class="gallery-item2" tabindex="0">
-                            <img src="/static/uploads/{{ post.id }}.png" class="gallery-image2" alt="" href="{{url_for('post', id = post.id )}}">
-    
-                            <div class="gallery-item-info2">
-    
-                                <ul>
-                                    <li class="gallery-item-likes2"><span class="visually-hidden2">Likes:</span><i class="fas2 fa-heart2" aria-hidden="true"></i> </li>
-                                    <li class="gallery-item-comments2"><span class="visually-hidden2">Comments:</span><i class="fas2 fa-comment2" aria-hidden="true"></i> </li>
-                                </ul>
-    
-                            </div>
-                        
-                        </div>
-                    </a>
+                    <figure  href="{{url_for('post', id = post.id )}}">
+                        <img src="/static/uploads/{{ post.id }}.png" class="gallery-image2" alt="" href="{{url_for('post', id = post.id )}}">
+                    </figure>
                 {% endfor %}
-            </div>
-            <div class="loader"></div>
         </div>
 
     <!-- <div class="loader"></div> -->
