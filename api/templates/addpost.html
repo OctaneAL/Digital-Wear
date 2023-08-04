@@ -1,19 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="bodyh">
+    <form action="" method="post" id="addpost-form" enctype="multipart/form-data">
     <div class="projcard-container">
     
         <div class="projcard projcard-blue">
             <div class="projcard-innerbox">
-                <p class="photoaddpost"> {{ form.csrf_token }}
+                <p class="photoaddpost"> 
+                    {{ form.csrf_token }}
                     {{ form.photo(class="fileaddpost") }}
                     <i class="validation"><span></span><span></span></i></p>
                     <div class="projcard-textbox">
-                    <div class="projcard-title"> {{ form.csrf_token }}
+                    <div class="projcard-title"> 
+                        {{ form.csrf_token }}
                     {{ form.title(id="title", type="text", placeholder="Title (Required)", cols="30", rows="2") }}
                     <!-- , class="name1" -->
                     <i class="validation"><span></span><span></span></i></div>
-                    <div class="projcard-subtitle">{{ form.csrf_token }}
+                    <div class="projcard-subtitle">
+                    {{ form.csrf_token }}
                     {{ form.website(id="website", type="text", placeholder="Website (Optional)") }} 
                     <!-- , class="pole1" -->
                     <i class="validation"><span></span><span></span></i></div>
@@ -24,7 +28,8 @@
                     <i class="validation"><span></span><span></span></i></div>
                     <div class="projcard-bar"></div>
 
-                    <div class="projcard-description">{{ form.csrf_token }}
+                    <div class="projcard-description">
+                    {{ form.csrf_token }}
                     {{ form.description(id="description", type="text", placeholder="Description (Required)", cols="60", rows="5") }}
                     <!-- , class="description1" -->
                     <i class="validation"><span></span><span></span></i></div>
@@ -35,5 +40,7 @@
     </div>
     <p> {{ form.csrf_token }}
         {{ form.submit(id = "submit", class="add1", value = "Add") }} </p>
+    </form>
 </div> 
 {% endblock %}
+
