@@ -62,28 +62,28 @@
     position: relative;
     top: 105px;
   }
-  input[type="text"]:focus,
-  input[type="email"]:focus {
+  #login-form-wrap input[type="text"]:focus,
+  #login-form-wrap input[type="email"]:focus {
     border-color: #3ca9e2;
   }
-  input[type="text"]:focus:invalid,
-  input[type="email"]:focus:invalid {
+  #login-form-wrap input[type="text"]:focus:invalid,
+  #login-form-wrap input[type="email"]:focus:invalid {
     color: #cc1e2b;
     border-color: #cc1e2b;
   }
-  input[type="text"]:valid ~ .validation,
-  input[type="email"]:valid ~ .validation {
-    display: block;
+  #login-form-wrap input[type="text"]:valid ~ .validation,
+  #login-form-wrap input[type="email"]:valid ~ .validation {
+    display: inline;
     border-color: #0c0;
   }
-  input[type="text"]:valid ~ .validation span,
-  input[type="email"]:valid ~ .validation span {
+  #login-form-wrap input[type="text"]:valid ~ .validation span,
+  #login-form-wrap input[type="email"]:valid ~ .validation span {
     background: #0c0;
     position: absolute;
     border-radius: 6px;
   }
-  input[type="text"]:valid ~ .validation span:first-child,
-  input[type="email"]:valid ~ .validation span:first-child {
+  #login-form-wrap input[type="text"]:valid ~ .validation span:first-child,
+  #login-form-wrap input[type="email"]:valid ~ .validation span:first-child {
     top: 30px;
     left: 14px;
     width: 20px;
@@ -91,8 +91,8 @@
     -webkit-transform: rotate(-45deg);
     transform: rotate(-45deg);
   }
-  input[type="text"]:valid ~ .validation span:last-child,
-  input[type="email"]:valid ~ .validation span:last-child {
+  #login-form-wrap input[type="text"]:valid ~ .validation span:last-child,
+  #login-form-wrap input[type="email"]:valid ~ .validation span:last-child {
     top: 35px;
     left: 8px;
     width: 11px;
@@ -101,7 +101,7 @@
     transform: rotate(45deg);
   }
   
-  .validation {
+  #login-form-wrap .validation {
     display: none;
     position: absolute;
     content: " ";
@@ -128,7 +128,7 @@
     left: 70px;
     border-radius: 35px;
   }
-  .password {
+  #login-form-wrap .password {
     color: #7ba79a;
     font-family: Inria Sans;
     font-size: 36px;
@@ -1196,6 +1196,55 @@ input::-webkit-input-placeholder {
 
 #type{
   color:  #7ba79a;
+}
+
+
+.bodyh input[type="text"]:focus{
+  border-color: #3ca9e2;
+  z-index: 10;
+}
+.bodyh  input[type="text"]:focus:invalid{
+  color: #cc1e2b;
+  border-color: #cc1e2b;
+  z-index: 10;
+}
+.bodyh  input[type="text"]:valid ~ .validation {
+  display: inline;
+  border-color: #0c0;
+  z-index: 10;
+}
+.bodyh input[type="text"]:valid ~ .validation span {
+  background: #0c0;
+  position: absolute;
+  border-radius: 6px;
+  z-index: 10;
+}
+.bodyh input[type="text"]:valid ~ .validation span:first-child {
+  top: 30px;
+  left: 14px;
+  width: 20px;
+  height: 3px;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  z-index: 10;
+}
+.bodyh input[type="text"]:valid ~ .validation span:last-child {
+  top: 35px;
+  left: 8px;
+  width: 11px;
+  height: 3px;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  z-index: 10;
+}
+
+.bodyh  .validation {
+  display: none;
+  position: absolute;
+  content: " ";
+  height: 60px;
+  width: 30px;
+  top: -12px;
 }
 
 
