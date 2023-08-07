@@ -182,6 +182,7 @@
             </div>
         </div> -->
         <!-- <p>капець</p> -->
+        <form action="" method="post">
         <div id="columns">
                 {% for post in context.posts %}
                     <figure  href="{{url_for('post', id = post.id )}}">
@@ -189,6 +190,7 @@
                     </figure>
                 {% endfor %}
         </div>
+        </form>
 
     <!-- <div class="loader"></div> -->
 </main>

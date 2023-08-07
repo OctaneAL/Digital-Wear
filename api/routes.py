@@ -68,9 +68,6 @@ def log_out():
     flash('')
     return redirect(url_for("login"))
 
-@app.route("/uploads/<filename>")
-def get_file(filename):
-    return send_from_directory(app.config['UPLOADED_PHOTOS_DEST'], filename)
  
 @app.route('/add_post', methods = ['GET', 'POST'])
 @login_required
@@ -93,6 +90,7 @@ def add_post():
         file.save(file_path)
 
         return redirect(url_for('profile')) 
+    
     return render_template("addpost.html", form=form)
 
 @app.route('/post/<int:id>')
